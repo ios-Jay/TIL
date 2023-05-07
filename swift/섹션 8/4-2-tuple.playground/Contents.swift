@@ -1,3 +1,3 @@
 import UIKit
 
-var greeting = "Hello, playground"
+// 강의 참조
