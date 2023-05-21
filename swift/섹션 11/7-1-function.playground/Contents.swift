@@ -73,6 +73,7 @@ sayHelloString()
 func plusFuntion(a: Int, b: Int) -> Int {
     let c = a + b
     return c       // 아웃풋이 있는 경우, 리턴키워드를 사용해야함
+                    // 아웃풋은 오직 하나의 타입만을 가질 수 있다.
 }
 
 
