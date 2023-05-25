@@ -8,4 +8,4 @@
 
 - [섹션 6](https://github.com/ios-Jay/TIL/blob/main/swift/%EC%84%B9%EC%85%98%206/%EC%84%B9%EC%85%98%206.md)
 
-- [섹션 7]()
+- [섹션 7](https://github.com/ios-Jay/TIL/blob/main/swift/%EC%84%B9%EC%85%98%207/%EC%84%B9%EC%85%98%207.md)
