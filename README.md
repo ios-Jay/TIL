@@ -20,6 +20,6 @@
 
 - [섹션 12](https://github.com/ios-Jay/TIL/blob/main/swift/%EC%84%B9%EC%85%98%2012/%EC%84%B9%EC%85%98%2012.md)
 
-- [섹션 13]()
+- [섹션 13](https://github.com/ios-Jay/TIL/blob/main/swift/%EC%84%B9%EC%85%98%2013/%EC%84%B9%EC%85%98%2013.md)
 
-- [섹션 14]()
+- [섹션 14](https://github.com/ios-Jay/TIL/blob/main/swift/%EC%84%B9%EC%85%98%2014/%EC%84%B9%EC%85%98%2014.md)
