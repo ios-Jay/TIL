@@ -17,3 +17,5 @@
 - [섹션 10](https://github.com/ios-Jay/TIL/blob/main/swift/%EC%84%B9%EC%85%98%2010/%EC%84%B9%EC%85%98%2010.md)
 
 - [섹션 11](https://github.com/ios-Jay/TIL/blob/main/swift/%EC%84%B9%EC%85%98%2011/%EC%84%B9%EC%85%98%2011.md)
+
+- [섹션 12]()
