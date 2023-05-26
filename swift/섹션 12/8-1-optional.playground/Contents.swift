@@ -94,7 +94,7 @@ print(optionalNum)      // Optional(10)
 
 
 let str: String = "Swift"
-var optionalStr: String? = nil      //옵셔널 스트링 타입 ====> (값이 없을 수도 있는 타입이다)
+var optionalStr: String? = nil      //옵셔널 스트링 타입 ====> (값이 없을 수도 있는 타입이다) 즉, 언제나 상수가 아닌 변수로 선언
 
 
 
