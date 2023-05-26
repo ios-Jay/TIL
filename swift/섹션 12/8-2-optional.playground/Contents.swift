@@ -58,7 +58,7 @@ if let name = optionalName {
 // 실제 앱을 만들때 guard let 바인딩 많이 사용
 
 func doSomething(name: String?) {
-    guard let n = name else { return }
+    guard let n = name else { return } //optional("hello")
     print(n)
 }
 
