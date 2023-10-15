@@ -119,3 +119,54 @@ default:
 //~= ->패턴 매칭 연산자:범위 연산자에 대한 참 거짓을 알려주는 연산자
 // ex) var num = 77
 //0..100 ~= num
+
+
+// 즉석에서 만들어 본 가위 바위 보 게임
+
+
+var choice1: Int = Int.random(in: 0...2)
+
+
+
+ switch choice1 {
+case 0:
+    print("가위입니다.")
+case 1:
+     print("바위입니다.")
+ case 2:
+     print("보자기입니다.")
+ default:
+     break
+}
+
+var choice2: Int = Int.random(in: 0...2)
+
+
+switch choice2 {
+case 0:
+    print("가위입니다.")
+case 1:
+     print("바위입니다.")
+ case 2:
+     print("보자기입니다.")
+ default:
+     break
+}
+
+if choice1 == 0 && choice2 == 1 {
+    print("2번이 승리하였습니다.")
+} else if choice1 == 0 && choice2 == 2 {
+    print("1번이 승리하였습니다.")
+} else if choice1 == 1 && choice2 == 0 {
+        print("1번이 승리하였습니다.")
+    } else if choice1 == 1 && choice2 == 2 {
+        print("2번이 승리하였습니다.")
+    }
+else if choice1 == 2 && choice2 == 0 {
+    print("2번이 승리하였습니다.")
+} else if choice1 == 2 && choice2 == 1 {
+    print("1번이 승리하였습니다.")
+}
+ else if choice1 == choice2 {
+    print("비겼습니다.")
+}
