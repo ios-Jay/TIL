@@ -6,8 +6,14 @@ import UIKit
 
 // 함수의 파라미터
 
-func someAdd(a: Int) -> Int {   // let a: Int (값의 변경이 불가능)
+func someAdd(a: Int) -> Int {
+    
+    // let a: Int (값의 변경이 불가능)
+    
     // a = a + 1 상수이기 때문에 이러한 할당은 불가능. 변수로 재선언해야함
+    
+    // 변수로 사용하고 싶다면 바인딩 하여 사용       var b = a, return b
+
     return a
 }
 
@@ -158,4 +164,80 @@ chooseStepFunction(backward: true, value: value)
 
 //case2
 chooseStepFunction(backward: false, value: value)
+
+
+// 함수 표기법(지칭), 함수의 타입 표기
+
+// 참고) 함수 표기법
+
+// 정의문
+
+func doSomething() {
+    print("출력")
+}
+
+func addPrintFunction(_ firstNum: Int, _ secondNum: Int) {
+    print(firstNum + secondNum)
+}
+
+// 실행문
+
+numberPrint(n: 3)
+
+/**=============================================
+ 
+ - 함수를 지칭하려는 경우, 함수를 어떻게 표기할까?
+ 
+ - 1) 개발자 문서를 읽을 때 필요
+ 
+ - 2) 함수를 지칭할때 필요(함수를 변수에 담거나)
+ 
+================================================**/
+
+
+// 함수의 표기법(함수를 지칭시)
+
+// 1) 파라미터가 없는 경우, ()를 삭제
+
+doSomething
+
+
+
+// 2) 아규먼트 레이블이 있는 경우, 아규먼트 레이블까지를 함수의 이름으로 봄
+
+numberPrint(n:)        //  "numberPrint n 함수이다."
+
+
+
+// 3) 파라미터가 여러개인 경우, 콤마없이 아규먼트이름과 콜론을 표기
+
+chooseStepFunction(backward:value:)
+
+
+
+// 4) 아규먼트 레이블이 생략된 경우, 아래와 같이 표기
+
+addPrintFunction(_:_:)
+
+// 함수 타입의 표기
+
+// 변수에 정수를 저장하는 경우에 타입 표기
+
+var num: Int = 5
+
+
+
+
+// 함수의 타입 표기 방법
+
+var function1: (Int) -> () = numberPrint(n:)
+
+
+var function2: (Int, Int) -> () = addPrintFunction(_:_:)
+
+
+
+// 변수가 함수를 가르키도록 할 수 있음
+
+function2(3, 5)
 
