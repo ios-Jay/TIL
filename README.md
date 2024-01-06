@@ -11,3 +11,17 @@
 - [If문](https://github.com/ios-Jay/TIL/blob/main/swift/3.%EC%A1%B0%EA%B1%B4%EB%AC%B8/If%EB%AC%B8.md)
 
 - [Switch문](https://github.com/ios-Jay/TIL/blob/main/swift/3.%EC%A1%B0%EA%B1%B4%EB%AC%B8/Switch%EB%AC%B8.md)
+
+- [튜플]()
+
+- [삼항연산자와 범위연산자]()
+
+- [For문]()
+
+- [While문]()
+
+- [함수 1]()
+
+- [함수 2]()
+
+- [함수 3]()
