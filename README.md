@@ -12,13 +12,13 @@
 
 - [Switch문](https://github.com/ios-Jay/TIL/blob/main/swift/3.%EC%A1%B0%EA%B1%B4%EB%AC%B8/Switch%EB%AC%B8.md)
 
-- [튜플]()
+- [튜플](https://github.com/ios-Jay/TIL/blob/main/Swift/4.%ED%8A%9C%ED%94%8C/%ED%8A%9C%ED%94%8C.md)
 
-- [삼항연산자와 범위연산자]()
+- [삼항연산자와 범위연산자](https://github.com/ios-Jay/TIL/blob/main/Swift/5.%EC%82%BC%ED%95%AD%EC%97%B0%EC%82%B0%EC%9E%90%EC%99%80%20%EB%B2%94%EC%9C%84%20%EC%97%B0%EC%82%B0%EC%9E%90/%EC%82%BC%ED%95%AD%EC%97%B0%EC%82%B0%EC%9E%90%EC%99%80%20%EB%B2%94%EC%9C%84%EC%97%B0%EC%82%B0%EC%9E%90.md)
 
-- [For문]()
+- [For문](https://github.com/ios-Jay/TIL/blob/main/Swift/6.%EB%B0%98%EB%B3%B5%EB%AC%B8/For%EB%AC%B8.md)
 
-- [While문]()
+- [While문](https://github.com/ios-Jay/TIL/blob/main/Swift/6.%EB%B0%98%EB%B3%B5%EB%AC%B8/While%EB%AC%B8.md)
 
 - [제어전송문]()
 
