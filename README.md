@@ -22,7 +22,7 @@
 
 - [제어전송문](https://github.com/ios-Jay/TIL/blob/main/Swift/6.%EB%B0%98%EB%B3%B5%EB%AC%B8/%EC%A0%9C%EC%96%B4%EC%A0%84%EC%86%A1%EB%AC%B8.md)
 
-- [함수 1]()
+- [함수 1](https://github.com/ios-Jay/TIL/blob/main/Swift/7.%ED%95%A8%EC%88%98/%ED%95%A8%EC%88%98%201.md)
 
 - [함수 2]()
 
