@@ -2,7 +2,7 @@
 
 #### 오늘 내가 배운 개념들을 정리한다.
 
-## Swift
+## Swift-Basic
 
 - [변수와 상수](https://github.com/ios-Jay/TIL/blob/main/swift/%EB%B3%80%EC%88%98%EC%99%80%20%EC%83%81%EC%88%98%20/%EB%B3%80%EC%88%98%EC%99%80%20%EC%83%81%EC%88%98%2C%20%EB%8D%B0%EC%9D%B4%ED%84%B0%20%ED%83%80%EC%9E%85.md)
 
@@ -45,3 +45,21 @@
 - [클래스와 구조체](https://github.com/ios-Jay/TIL/blob/main/Swift/11.%ED%81%B4%EB%9E%98%EC%8A%A4%EC%99%80%20%EA%B5%AC%EC%A1%B0%EC%B2%B4/%EC%B4%88%EA%B8%B0%ED%99%94.md)
 
 - [초기화](https://github.com/ios-Jay/TIL/blob/main/Swift/11.%ED%81%B4%EB%9E%98%EC%8A%A4%EC%99%80%20%EA%B5%AC%EC%A1%B0%EC%B2%B4/%EC%B4%88%EA%B8%B0%ED%99%94.md)
+
+- [속성]()
+
+- [메서드]()
+
+- []()
+- []()
+- []()
+- []()
+- []()
+- []()
+- []()
+- []()
+- []()
+- []()
+- []()
+- []()
+- []()
