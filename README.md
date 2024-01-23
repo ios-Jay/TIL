@@ -42,13 +42,13 @@
 
 - [열거형 2](https://github.com/ios-Jay/TIL/blob/main/Swift/10.%EC%97%B4%EA%B1%B0%ED%98%95/%EC%97%B4%EA%B1%B0%ED%98%95%202.md)
 
-- [클래스와 구조체](https://github.com/ios-Jay/TIL/blob/main/Swift/11.%ED%81%B4%EB%9E%98%EC%8A%A4%EC%99%80%20%EA%B5%AC%EC%A1%B0%EC%B2%B4/%EC%B4%88%EA%B8%B0%ED%99%94.md)
+- [클래스와 구조체](https://github.com/ios-Jay/TIL/blob/main/Swift/11.%ED%81%B4%EB%9E%98%EC%8A%A4%EC%99%80%20%EA%B5%AC%EC%A1%B0%EC%B2%B4/%ED%81%B4%EB%9E%98%EC%8A%A4%EC%99%80%20%EA%B5%AC%EC%A1%B0%EC%B2%B4.md)
 
 - [초기화](https://github.com/ios-Jay/TIL/blob/main/Swift/11.%ED%81%B4%EB%9E%98%EC%8A%A4%EC%99%80%20%EA%B5%AC%EC%A1%B0%EC%B2%B4/%EC%B4%88%EA%B8%B0%ED%99%94.md)
 
-- [속성]()
+- [속성](https://github.com/ios-Jay/TIL/blob/main/Swift/11.%ED%81%B4%EB%9E%98%EC%8A%A4%EC%99%80%20%EA%B5%AC%EC%A1%B0%EC%B2%B4/%EC%86%8D%EC%84%B1.md)
 
-- [메서드]()
+- [메서드](https://github.com/ios-Jay/TIL/blob/main/Swift/11.%ED%81%B4%EB%9E%98%EC%8A%A4%EC%99%80%20%EA%B5%AC%EC%A1%B0%EC%B2%B4/%EB%A9%94%EC%84%9C%EB%93%9C.md)
 
 - []()
 - []()
