@@ -12,16 +12,17 @@ import UIKit
 
 
 var num = Int.random(in: 1...100)
+
 var array = ["Hello", "Jobs", "Swift", "Cook"]
-
-
-// 아래 주석을 제거하시면 됩니다.
-// var result = array[num 변수를 이용, 이곳에 코드를 어떻게 짜야할지]
-// print(result)
 
 var result = array[num % 4]
 
 print(result)
+
+// var result = array[num % array.count]
+
+// print(result)
+
 
 
 
@@ -37,13 +38,38 @@ print(result)
 
 var number = Int.random(in: 50...100)
 
+var isSuccess = number >= 70 ? "성공" : "실패"
 
-// var isSuccess = "이곳에 "삼항 연산자"를 이용한 코드를 작성"
-
-// print(isSuccess)
-
-
-var isSuccess = number
+print(isSuccess)
 
 
-isSuccess >= 70 ? print("성공"):print("실패")
+
+
+
+/**==================================================================
+ [3번 문제]
+  -  아래의 반복문을 사용해서, 1부터 20사이의 숫자 중에서 2의 배수를 출력하는 코드를 완성하세요.
+ ===================================================================**/
+
+
+for num in 1...20 {
+    
+    if num % 2 != 0 {
+        
+        continue
+        
+    }
+
+     print("2의 배수: \(num)")
+    
+}
+
+
+for num in 1...20 {
+    
+    if num % 2 == 0 {
+        
+        print("2의 배수: \(num)")
+    }
+}
+
