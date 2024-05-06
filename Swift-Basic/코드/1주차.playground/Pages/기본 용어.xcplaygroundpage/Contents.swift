@@ -1,8 +1,6 @@
 import UIKit
 
 
-
-
 /*:# Programming Basic
 */
 
