@@ -3,6 +3,7 @@
     <pages>
         <page name='기본 용어'/>
         <page name='변수와상수'/>
-        <page name='데이터타입'/>
+        <page name='기본연산자'/>
+        <page name='데이터타입'/>
     </pages>
 </playground>
