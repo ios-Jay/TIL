@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <playground version='6.0' target-platform='ios' display-mode='rendered' buildActiveScheme='true' importAppTypes='true'>
     <pages>
-        <page name='기본 용어'/>
+        <page name='0.프로그래밍 기본 용어'/>
         <page name='1.변수와상수'/>
         <page name='2.데이터타입'/>
         <page name='3.기본연산자'/>
-        <page name='4.조건문'/>
+        <page name='4.조건문'/>
+        <page name='5.튜플'/>
     </pages>
 </playground>
