@@ -295,3 +295,223 @@ var name = "스티브"
 
 print(name.count)
 
+
+
+/*: ## 4) 삼항 연산자(Ternary Conditional Operator)
+ - 기본 형태 / if문보다 조금은 한정적인 형태로 사용 가능
+ ---
+ */
+// if / else문
+
+
+var score = 70
+
+
+if score >= 70 {
+    
+    print("Pass")
+    
+} else {
+    
+    print("Fail")
+}
+
+// 3항 연산자 (위의 if/else문과 완벽하게 동일)
+
+score >= 70 ? print("Pass") : print("Fail")
+
+// 한줄인 경우
+
+// 주로 값을 대입하는 경우 (주로 값에서 2가지에서 한가지를 선택하는 경우)
+
+//:> 조건에 따라 선택이 두가지인 경우 -> 삼항연산자를 떠올리자
+let profileName: String = "사비시몬스"
+
+
+profileName.count >= 5 ? print("1") : print("2")
+
+
+
+
+/*: ## 5) 범위 연산자(Range Operators)
+ - 범위연산자: 스위프트에서 숫자의 범위를 간편하게 표시할때 사용
+ ---
+ */
+/**===================================================
+ 
+- 아래의 숫자와 위의 숫자까지의 범위를 포함
+
+- 자체가 특별한 타입으로 정의되어있고, 의미하긴 하지만
+ 
+- 일반적으로 위와 같이 타입을 정의해서 사용하는 경우는 드물고,
+ 
+- 1) 반복문(for문)    2) 배열    3) switch문
+ 
+- 에서만 주로 활용하므로 위의 경우에 활용 방식을 이해하는 것이 더 중요
+
+<주의점>
+ 
+- 내림차순 형식으로 표기 불가능  12...0
+ 
+- 실수형식의 범위 표기도 가능하지만 사용하는 경우는 드뭄
+ 
+=====================================================**/
+
+
+let numbers = 1...10
+
+
+/*:
+ ---
+ - 1) Closed Range Operator(닫힌 범위연산자), One-Sided Ranges의 표기
+ ---
+ */
+let range = 1 ... 10     // ClosedRange<Int>
+
+let range1 = 1...      // PartialRangeFrom<Int>
+
+let range2 =  ...10    // PartialRangeThrough<Int>
+
+
+// One-Sided 표기시에는 숫자와 범위연산자를 붙여서 써야함
+
+/*:
+ ---
+ - 2) Half-Open Range Operator(반 개방 범위연산자), One-Sided Ranges의 표기
+ ---
+ */
+let rangeH = 1 ..< 10     // Range<Int>
+
+let rangeH1 =  ..<10    // PartialRangeUpTo<Int>
+
+
+// One-Sided 표기시에는 숫자와 범위연산자를 붙여서 써야함
+
+
+
+/*: ## 6) 범위 연산자의 활용
+ - 1) for문과 함께 사용
+ ---
+ */
+for index in 1...5 {
+    
+    print("\(index) * 5: (index * 5)")
+    
+}
+
+let namesArray = ["라민 야말", "다니 올모", "차비 시몬스", "가비"]
+
+
+let playersCount = namesArray.count
+
+
+
+for i in 0..<playersCount {
+    
+    print("Plyaer \(i + 1) is called \(namesArray[i])")
+    
+}
+
+/*:---
+ - 2) 배열의 서브스크립트 문법과 함께 사용
+ ---
+ */
+
+
+namesArray[...2]
+
+namesArray[..<1]
+
+
+/*:---
+ - 3) 스위치문의 케이스에서 사용
+ ---
+ */
+
+var myage: Int = Int.random(in: 10...49)
+
+
+switch myage {
+case 10...19:
+    print("10대입니다.")
+case 20...29:
+    print("20대입니다.")
+case 30...39:
+    print("30대입니다.")
+case 40...49:
+    print("40대입니다.")
+default:
+    break
+}
+
+
+var point = (1,3)
+
+
+switch point {
+case (0,0):
+    print("(0,0은 원점 위에 있다.")
+case (-2...2, -2...2):
+    print("\(point.0), \(point.1)은 원점의 주위에 있다.")
+default:
+    print("점은 (\(point.0), \(point.1))에 위치한다.")
+}
+
+
+/*: ## 7) 패턴매칭 연산자(~=)
+ - 패턴매칭 연산자: 숫자가 범위내에 있는지 확인하는 연산자
+ ---
+ */
+
+let myRange = 1...100
+
+myRange ~= 30
+
+// 결과 값은 참과 거짓
+
+
+/*:---
+ - 10 <= n <= 100 이런 문장은 스위프트에서 성립하지 않는다.
+ ---
+ */
+var n = 20
+
+
+if n >= 10 && n <= 100 {
+    
+    print("10이상, 100이하입니다.")
+    
+}
+
+
+if 10...100 ~= n {
+    
+    print("10이상, 100이하입니다.")
+    
+}
+
+var yourAge = 33
+
+if 20...29 ~= yourAge {
+    print("20대 입니다.")
+} else if 30...39 ~= yourAge {
+    print("30대 입니다.")
+}
+
+
+// 스위치문은 내부적으로 패턴매칭 연산자로 구현이 되어있음
+
+switch yourAge {
+    
+case 20...29:
+    
+    print("20대 입니다.")
+    
+case 30...39:
+    
+    print("30대 입니다.")
+    
+default :
+    
+    break
+}
