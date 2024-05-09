@@ -6,7 +6,8 @@
         <page name='2.데이터타입'/>
         <page name='3.기본연산자'/>
         <page name='4.조건문'/>
-        <page name='6.반복문'/>
         <page name='5.튜플'/>
+        <page name='6.반복문'/>
+        <page name='7.함수'/>
     </pages>
 </playground>
