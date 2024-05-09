@@ -4,12 +4,11 @@ import UIKit
 
 /*: 모든 프로그래밍은 아래의 세가지 논리로 이루어 진다.
  
- 1. 순차
+ 1. 순차: 개발자가 정한 규칙에 따라 순차적으로(차례대로) 실행한다.
  
- 2. 조건(+데이터)
+ 2. 조건(+데이터): 조건(데이터)에 따라 어떤 동작을 할지 말지의 여부
  
  3. 반복
- 
  
  */
 
@@ -257,4 +256,276 @@ if myRpsChoice == 0 {
     print("바위입니다.")
 } else if myRpsChoice == 2{
     print("보자기입니다.")
+}
+
+
+
+/*: ## 3) Switch문
+ - 표현식/변수를 (매칭시켜) 분기처리할때 사용하는 조건문
+ ---
+ 
+ */
+
+//:> if문보다 한정적인 상황에서 사용
+// 조건을 부등식이 아닌 "=="와만 비교
+
+// 변수가 어떤값을 가지냐에 따라 실행문을 선택하고 진행
+
+
+var choice: String = "바위"
+
+
+switch choice { // 변수(표현식)
+case "가위":
+    print("가위입니다.") // "가위" == "가위"
+case "바위":
+    print("바위입니다.")
+case "보자기":
+    print("보자기입니다.")
+default:
+    break
+}
+
+/**=======================================================
+ 
+ [스위치문의 특징]
+ 
+ - 1) 스위치문에서 케이스의 ,(콤마)는 또는의 의미로 하나의 케이스에
+      여러 매칭값을 넣을 수 있음
+ 
+ - 2) switch 문은 (비교하고 있는)값의 가능한 모든 경우의 수를 반드시
+      다루어야 함 (exhaustive: 하나도 빠뜨리는 것 없이 철저한)
+      모든 사례를 다루지 않았을 때에는 디폴트 케이스가 반드시 있어야 한다.
+ 
+ - 3) 각 케이스에는 문장이 최소 하나 이상 있어야 하며 만약 없다면 컴파일
+      에러 발생(의도하지 않은 실수를 방지 목적)
+ 
+      실행하지 않으려면, break를 반드시 입력해야함 (if문에서는 실행문을
+      입력안해도 괜찮지만, 스위치문에서는 필요함)
+ 
+=========================================================**/
+
+
+switch choice {  // 문자열
+    
+case "가위":
+    
+    print("가위 입니다.")
+    
+case "바위", "보":
+    
+    print("바위 또는 보 입니다.")
+    
+default:
+    
+    break
+}
+
+
+
+var isTrue = true
+
+
+switch isTrue {
+    
+case true:
+    
+    print("true")
+    
+case false:
+    
+    print("false")
+    
+}
+
+
+
+/*:---
+ - fallthrough 키워드의 사용
+ ---
+ */
+
+var num1 = 10
+
+switch num1 {
+    
+case ..<10:
+    
+    print("1")
+    
+    // 매칭된 값에 대한 고려없이 무조건 다음블럭을 실행함
+    
+    fallthrough
+    
+case 10:
+    
+    print("2")
+    
+    fallthrough
+    
+default:
+    
+    print("3")
+    
+}
+
+/*: ## 4) Switch문의 활용
+ - 스위치문과 밸류바인딩(Value Binding)
+ ---
+ */
+// 바인딩의 일반적인 의미
+
+var n1 = 7
+
+
+let n2 = n1
+
+// 바인딩을 한다. (다른 변수 / 상수의 새로운 식별자로 할당한다.)
+
+
+//:> 바인딩: 다른 새로운 변수 / 상수 식별자로 할당
+
+var number1 = 6
+
+
+switch number1 {
+case let n:     // let n = number1
+    print("숫자: \(n)")
+default:
+    break
+}
+
+/*:---
+ - 스위치문과 where절(스위치문에서 조건을 확인하는 방식)
+ ---
+ */
+// 일단 다른 상수 값에 바인딩한(넣은)후, 조건절(참/거짓 문장)을 통해 다시 한번 더 조건 확인
+
+// (바인딩 된 상수는 케이스블럭 내부에서만 사용 가능하고, 상수 바인딩은 주로 where절하고 같이 사용됨)
+
+var number2 = 7
+
+switch number2 {
+case let n where n % 2 == 0:
+    print("짝수 숫자: \(n)")
+case let n where n % 2 == 1:
+    print("홀수 숫자: \(n)")
+default:
+    break
+}
+
+
+//:> where키워드는 조건을 확인하는 키워드
+
+
+/*: ## 5) 연습문제 Ⅰ:가위 바위 보 게임 만들기
+ 
+ - 가위 / 바위 / 보 어떻게 만들어야 할까?: 내가 선택한 것과 컴퓨터의 선택을 비교
+ ---
+ */
+
+
+/*:---
+ - if문으로만 만들어보기
+ ---
+ */
+
+var myChoice: Int = Int.random(in: 0...2)
+
+var comChoice: Int = Int.random(in: 0...2)
+
+if myChoice == 0 {
+    print("당신의 선택은 가위입니다.")
+} else if myChoice == 1 {
+    print("당신의 선택은 바위입니다.")
+} else if myChoice == 2 {
+    print("당신의 선택은 보입니다.")
+}
+
+if comChoice == 0 {
+    print("컴퓨터의 선택은 가위입니다.")
+} else if comChoice == 1 {
+    print("컴퓨터의 선택은 바위입니다.")
+} else if comChoice == 2 {
+    print("컴퓨터의 선택은 보입니다.")
+}
+
+
+if myChoice == comChoice {
+    print("비겼습니다.")
+} else if myChoice == 0 && comChoice == 2 {
+    print("당신이 이겼습니다.")
+} else if myChoice == 1 && comChoice == 0 {
+    print("당신이 이겼습니다.")
+} else if myChoice == 2 && comChoice == 1 {
+    print("당신이 이겼습니다.")
+} else {
+    print("당신은 졌습니다.")
+}
+
+
+
+
+
+/*:---
+ - Switch문과 함께 작성하기
+ ---
+ */
+
+var myChoice1: Int = Int.random(in: 0...2)
+
+var comChoice1: Int = Int.random(in: 0...2)
+
+
+switch myChoice1 {
+case 0:
+    print("당신의 선택은 가위입니다.")
+case 1:
+    print("당신의 선택은 바위입니다.")
+case 2:
+    print("당신의 선택은 보입니다.")
+default:
+    break
+}
+
+switch comChoice1 {
+case 0:
+    print("컴퓨터의 선택은 가위입니다.")
+case 1:
+    print("컴퓨터의 선택은 바위입니다.")
+case 2:
+    print("컴퓨터의 선택은 보입니다.")
+    
+default:
+    break
+}
+
+
+if myChoice == comChoice {
+    print("비겼습니다.")
+} else if myChoice == 0 && comChoice == 2 {
+    print("당신이 이겼습니다.")
+} else if myChoice == 1 && comChoice == 0 {
+    print("당신이 이겼습니다.")
+} else if myChoice == 2 && comChoice == 1 {
+    print("당신이 이겼습니다.")
+} else {
+    print("당신은 졌습니다.")
+}
+
+
+/*: ## 6) 연습문제 Ⅱ: 랜덤빙고 게임 만들기
+ - 내가 선택한 것과 컴퓨터가 랜덤으로 선택한 것을 비교하고 출력
+ ---
+ */
+var myChoice2: Int = 4
+
+var comChoice2: Int = Int.random(in: 1...10)
+
+if comChoice2 > myChoice2 {
+    print("Up")
+} else if comChoice2 < myChoice2 {
+    print("Down")
+} else {
+    print("Bingo")
 }
