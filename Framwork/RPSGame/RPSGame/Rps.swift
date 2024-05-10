@@ -1,3 +1,9 @@
+//
+//  Rps.swift
+//  RpsGame
+//
+//  Created by 김재혁 on 5/10/24.
+//
 
 import Foundation
 

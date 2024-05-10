@@ -7,29 +7,29 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E36EC4CF2BC80FBE00F1C6FE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36EC4CE2BC80FBE00F1C6FE /* AppDelegate.swift */; };
-		E36EC4D12BC80FBE00F1C6FE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36EC4D02BC80FBE00F1C6FE /* SceneDelegate.swift */; };
-		E36EC4D32BC80FBE00F1C6FE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36EC4D22BC80FBE00F1C6FE /* ViewController.swift */; };
-		E36EC4D62BC80FBE00F1C6FE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E36EC4D42BC80FBE00F1C6FE /* Main.storyboard */; };
-		E36EC4D82BC80FBF00F1C6FE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E36EC4D72BC80FBF00F1C6FE /* Assets.xcassets */; };
-		E36EC4DB2BC80FBF00F1C6FE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E36EC4D92BC80FBF00F1C6FE /* LaunchScreen.storyboard */; };
-		E36EC4E32BC81F8A00F1C6FE /* Rps.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36EC4E22BC81F8A00F1C6FE /* Rps.swift */; };
+		E386ADBE2BEE1F5F00AD0092 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E386ADBD2BEE1F5F00AD0092 /* AppDelegate.swift */; };
+		E386ADC02BEE1F5F00AD0092 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E386ADBF2BEE1F5F00AD0092 /* SceneDelegate.swift */; };
+		E386ADC22BEE1F5F00AD0092 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E386ADC12BEE1F5F00AD0092 /* ViewController.swift */; };
+		E386ADC52BEE1F5F00AD0092 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = E386ADC42BEE1F5F00AD0092 /* Base */; };
+		E386ADC72BEE1F6000AD0092 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E386ADC62BEE1F6000AD0092 /* Assets.xcassets */; };
+		E386ADCA2BEE1F6000AD0092 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = E386ADC92BEE1F6000AD0092 /* Base */; };
+		E386ADD22BEE295B00AD0092 /* Rps.swift in Sources */ = {isa = PBXBuildFile; fileRef = E386ADD12BEE295B00AD0092 /* Rps.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		E36EC4CB2BC80FBE00F1C6FE /* RPSGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RPSGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		E36EC4CE2BC80FBE00F1C6FE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E36EC4D02BC80FBE00F1C6FE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		E36EC4D22BC80FBE00F1C6FE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		E36EC4D52BC80FBE00F1C6FE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		E36EC4D72BC80FBF00F1C6FE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		E36EC4DA2BC80FBF00F1C6FE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		E36EC4DC2BC80FBF00F1C6FE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E36EC4E22BC81F8A00F1C6FE /* Rps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rps.swift; sourceTree = "<group>"; };
+		E386ADBA2BEE1F5F00AD0092 /* RpsGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RpsGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E386ADBD2BEE1F5F00AD0092 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		E386ADBF2BEE1F5F00AD0092 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		E386ADC12BEE1F5F00AD0092 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		E386ADC42BEE1F5F00AD0092 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		E386ADC62BEE1F6000AD0092 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E386ADC92BEE1F6000AD0092 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		E386ADCB2BEE1F6000AD0092 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E386ADD12BEE295B00AD0092 /* Rps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rps.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		E36EC4C82BC80FBE00F1C6FE /* Frameworks */ = {
+		E386ADB72BEE1F5F00AD0092 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -39,73 +39,73 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		E36EC4C22BC80FBE00F1C6FE = {
+		E386ADB12BEE1F5F00AD0092 = {
 			isa = PBXGroup;
 			children = (
-				E36EC4CD2BC80FBE00F1C6FE /* RPSGame */,
-				E36EC4CC2BC80FBE00F1C6FE /* Products */,
+				E386ADBC2BEE1F5F00AD0092 /* RpsGame */,
+				E386ADBB2BEE1F5F00AD0092 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		E36EC4CC2BC80FBE00F1C6FE /* Products */ = {
+		E386ADBB2BEE1F5F00AD0092 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E36EC4CB2BC80FBE00F1C6FE /* RPSGame.app */,
+				E386ADBA2BEE1F5F00AD0092 /* RpsGame.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		E36EC4CD2BC80FBE00F1C6FE /* RPSGame */ = {
+		E386ADBC2BEE1F5F00AD0092 /* RpsGame */ = {
 			isa = PBXGroup;
 			children = (
-				E36EC4CE2BC80FBE00F1C6FE /* AppDelegate.swift */,
-				E36EC4D02BC80FBE00F1C6FE /* SceneDelegate.swift */,
-				E36EC4E22BC81F8A00F1C6FE /* Rps.swift */,
-				E36EC4D22BC80FBE00F1C6FE /* ViewController.swift */,
-				E36EC4D42BC80FBE00F1C6FE /* Main.storyboard */,
-				E36EC4D72BC80FBF00F1C6FE /* Assets.xcassets */,
-				E36EC4D92BC80FBF00F1C6FE /* LaunchScreen.storyboard */,
-				E36EC4DC2BC80FBF00F1C6FE /* Info.plist */,
+				E386ADBD2BEE1F5F00AD0092 /* AppDelegate.swift */,
+				E386ADBF2BEE1F5F00AD0092 /* SceneDelegate.swift */,
+				E386ADC12BEE1F5F00AD0092 /* ViewController.swift */,
+				E386ADD12BEE295B00AD0092 /* Rps.swift */,
+				E386ADC32BEE1F5F00AD0092 /* Main.storyboard */,
+				E386ADC62BEE1F6000AD0092 /* Assets.xcassets */,
+				E386ADC82BEE1F6000AD0092 /* LaunchScreen.storyboard */,
+				E386ADCB2BEE1F6000AD0092 /* Info.plist */,
 			);
-			path = RPSGame;
+			path = RpsGame;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		E36EC4CA2BC80FBE00F1C6FE /* RPSGame */ = {
+		E386ADB92BEE1F5F00AD0092 /* RpsGame */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E36EC4DF2BC80FBF00F1C6FE /* Build configuration list for PBXNativeTarget "RPSGame" */;
+			buildConfigurationList = E386ADCE2BEE1F6000AD0092 /* Build configuration list for PBXNativeTarget "RpsGame" */;
 			buildPhases = (
-				E36EC4C72BC80FBE00F1C6FE /* Sources */,
-				E36EC4C82BC80FBE00F1C6FE /* Frameworks */,
-				E36EC4C92BC80FBE00F1C6FE /* Resources */,
+				E386ADB62BEE1F5F00AD0092 /* Sources */,
+				E386ADB72BEE1F5F00AD0092 /* Frameworks */,
+				E386ADB82BEE1F5F00AD0092 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = RPSGame;
-			productName = RPSGame;
-			productReference = E36EC4CB2BC80FBE00F1C6FE /* RPSGame.app */;
+			name = RpsGame;
+			productName = RpsGame;
+			productReference = E386ADBA2BEE1F5F00AD0092 /* RpsGame.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		E36EC4C32BC80FBE00F1C6FE /* Project object */ = {
+		E386ADB22BEE1F5F00AD0092 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1430;
-				LastUpgradeCheck = 1430;
+				LastSwiftUpdateCheck = 1530;
+				LastUpgradeCheck = 1530;
 				TargetAttributes = {
-					E36EC4CA2BC80FBE00F1C6FE = {
-						CreatedOnToolsVersion = 14.3.1;
+					E386ADB92BEE1F5F00AD0092 = {
+						CreatedOnToolsVersion = 15.3;
 					};
 				};
 			};
-			buildConfigurationList = E36EC4C62BC80FBE00F1C6FE /* Build configuration list for PBXProject "RPSGame" */;
+			buildConfigurationList = E386ADB52BEE1F5F00AD0092 /* Build configuration list for PBXProject "RpsGame" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -113,56 +113,56 @@
 				en,
 				Base,
 			);
-			mainGroup = E36EC4C22BC80FBE00F1C6FE;
-			productRefGroup = E36EC4CC2BC80FBE00F1C6FE /* Products */;
+			mainGroup = E386ADB12BEE1F5F00AD0092;
+			productRefGroup = E386ADBB2BEE1F5F00AD0092 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				E36EC4CA2BC80FBE00F1C6FE /* RPSGame */,
+				E386ADB92BEE1F5F00AD0092 /* RpsGame */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		E36EC4C92BC80FBE00F1C6FE /* Resources */ = {
+		E386ADB82BEE1F5F00AD0092 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E36EC4DB2BC80FBF00F1C6FE /* LaunchScreen.storyboard in Resources */,
-				E36EC4D82BC80FBF00F1C6FE /* Assets.xcassets in Resources */,
-				E36EC4D62BC80FBE00F1C6FE /* Main.storyboard in Resources */,
+				E386ADC72BEE1F6000AD0092 /* Assets.xcassets in Resources */,
+				E386ADCA2BEE1F6000AD0092 /* Base in Resources */,
+				E386ADC52BEE1F5F00AD0092 /* Base in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		E36EC4C72BC80FBE00F1C6FE /* Sources */ = {
+		E386ADB62BEE1F5F00AD0092 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E36EC4D32BC80FBE00F1C6FE /* ViewController.swift in Sources */,
-				E36EC4E32BC81F8A00F1C6FE /* Rps.swift in Sources */,
-				E36EC4CF2BC80FBE00F1C6FE /* AppDelegate.swift in Sources */,
-				E36EC4D12BC80FBE00F1C6FE /* SceneDelegate.swift in Sources */,
+				E386ADC22BEE1F5F00AD0092 /* ViewController.swift in Sources */,
+				E386ADD22BEE295B00AD0092 /* Rps.swift in Sources */,
+				E386ADBE2BEE1F5F00AD0092 /* AppDelegate.swift in Sources */,
+				E386ADC02BEE1F5F00AD0092 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		E36EC4D42BC80FBE00F1C6FE /* Main.storyboard */ = {
+		E386ADC32BEE1F5F00AD0092 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				E36EC4D52BC80FBE00F1C6FE /* Base */,
+				E386ADC42BEE1F5F00AD0092 /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		E36EC4D92BC80FBF00F1C6FE /* LaunchScreen.storyboard */ = {
+		E386ADC82BEE1F6000AD0092 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				E36EC4DA2BC80FBF00F1C6FE /* Base */,
+				E386ADC92BEE1F6000AD0092 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -170,10 +170,11 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		E36EC4DD2BC80FBF00F1C6FE /* Debug */ = {
+		E386ADCC2BEE1F6000AD0092 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -206,7 +207,8 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -220,20 +222,22 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
-		E36EC4DE2BC80FBF00F1C6FE /* Release */ = {
+		E386ADCD2BEE1F6000AD0092 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -266,7 +270,8 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
@@ -274,17 +279,17 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
-		E36EC4E02BC80FBF00F1C6FE /* Debug */ = {
+		E386ADCF2BEE1F6000AD0092 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -292,7 +297,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = RPSGame/Info.plist;
+				INFOPLIST_FILE = RpsGame/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -304,18 +309,19 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.iosjay.RPSGame;
+				PRODUCT_BUNDLE_IDENTIFIER = com.iosjay.RpsGame;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
-		E36EC4E12BC80FBF00F1C6FE /* Release */ = {
+		E386ADD02BEE1F6000AD0092 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -323,7 +329,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = RPSGame/Info.plist;
+				INFOPLIST_FILE = RpsGame/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -335,11 +341,12 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.iosjay.RPSGame;
+				PRODUCT_BUNDLE_IDENTIFIER = com.iosjay.RpsGame;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -349,25 +356,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		E36EC4C62BC80FBE00F1C6FE /* Build configuration list for PBXProject "RPSGame" */ = {
+		E386ADB52BEE1F5F00AD0092 /* Build configuration list for PBXProject "RpsGame" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				E36EC4DD2BC80FBF00F1C6FE /* Debug */,
-				E36EC4DE2BC80FBF00F1C6FE /* Release */,
+				E386ADCC2BEE1F6000AD0092 /* Debug */,
+				E386ADCD2BEE1F6000AD0092 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E36EC4DF2BC80FBF00F1C6FE /* Build configuration list for PBXNativeTarget "RPSGame" */ = {
+		E386ADCE2BEE1F6000AD0092 /* Build configuration list for PBXNativeTarget "RpsGame" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				E36EC4E02BC80FBF00F1C6FE /* Debug */,
-				E36EC4E12BC80FBF00F1C6FE /* Release */,
+				E386ADCF2BEE1F6000AD0092 /* Debug */,
+				E386ADD02BEE1F6000AD0092 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = E36EC4C32BC80FBE00F1C6FE /* Project object */;
+	rootObject = E386ADB22BEE1F5F00AD0092 /* Project object */;
 }

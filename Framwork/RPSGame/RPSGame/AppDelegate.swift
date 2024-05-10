@@ -1,8 +1,8 @@
 //
 //  AppDelegate.swift
-//  RPSGame
+//  RpsGame
 //
-//  Created by 김재혁 on 2024/04/11.
+//  Created by 김재혁 on 5/10/24.
 //
 
 import UIKit
