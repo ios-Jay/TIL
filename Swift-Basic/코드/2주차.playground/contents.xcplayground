@@ -5,6 +5,7 @@
         <page name='2.옵셔널'/>
         <page name='3.컬렉션'/>
         <page name='4.열거형'/>
-        <page name='5.시험'/>
+        <page name='6.함수 실행의 메모리 구조'/>
+        <page name='5.시험'/>
     </pages>
 </playground>

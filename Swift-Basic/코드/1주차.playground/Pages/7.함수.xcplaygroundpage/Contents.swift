@@ -138,7 +138,7 @@ func plusFunction(num1: Int, num2: Int) -> Int {
 
 plusFunction(num1: 3, num2: 8)
 
-print(plusFunction(a: 5, b: 6))
+print(plusFunction(num1: 8, num2: 3))
 
 // 함수 정의문
 
@@ -210,14 +210,14 @@ func sayHelloFunction() {   // Void가 생략되어 있는 상태
     
 }
 
-func sayHelloFunction() -> Void {
+func sayHelloFunction1() -> Void {
     
     // Void: 빈, 비어있는. return형이 없는 함수는 이렇게 사용 가능
     
     print("Hello Swift")
 }
 
-func sayHelloFunction() -> () {
+func sayHelloFunction2() -> () {
     
     print("Hello Swift")
     
@@ -244,3 +244,4 @@ sayHello()              // 제어권(메모리 공간에서 값은 X, 코드의 
 print(sayHelloString())
 
 // 제어권 + 결과값: 메모리 공간에 값이 존재
+
