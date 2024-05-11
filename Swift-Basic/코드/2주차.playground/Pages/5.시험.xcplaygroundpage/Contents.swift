@@ -1,9 +1,14 @@
-import UIKit
+import Foundation
 
+//: # TEST
+
+
+/*: ## 2주차 테스트
+ ---
+ */
 /**==================================================================
  
  [1번 문제]
- 
   - 하나의 앱이 실행되면, 메모리는 어떤 4가지 영역으로 나누어 지나요? 4가지 영역의 이름을 쓰세요.
  
  ===================================================================**/
@@ -19,7 +24,6 @@ import UIKit
 /**==================================================================
  
  [2번 문제]
- 
   - 프로그래밍에서, 표현식(Expression)이 어떤 의미인가요? 아는대로 작성하세요.
  
  ===================================================================**/
@@ -50,22 +54,35 @@ import UIKit
  ===================================================================**/
 
 
-var num = 10
-
 var sum = 0
 
 
-for i in 1...num {
+for k in 1...10 {
     
-    sum += i
-    
-    // print(sum)
-    
-    
+    sum += k
 }
 
 
-print(sum)
+// print(sum)
+
+/*
+ 
+ var n = 1
+ 
+ while n <= 10 {
+     
+     sum += n
+     
+     n += 1
+     
+ }
+
+ print(sum)
+
+ 
+ */
+
+
 
 /**==================================================================
  
@@ -75,13 +92,14 @@ print(sum)
  
  ===================================================================**/
 
+
 // 두개 이상의 데이터 타입을 저장할 수 있는 복합 혼합 타입: 순서쌍
 
 // "연관된 데이터"를 하나로 묶어서 간단하게 사용하는 타입
 
 // (여러개의 데이터를 가볍게 묶어서, 데이터로 활용가능)
 
-var id: (String, Int) = (name: "김재혁", age: 33)
+var id: (String, Int) = (gmail: "iOS.Jay.Developer@gmail.com", Password: 1234)
 
 var tuple = ("홍길동", 20, "서울")
 
@@ -97,13 +115,11 @@ var coordinate = (5, 10)
  
  ===================================================================**/
 
-
 for i in 2...9 {
     
     for j in 2...9 {
         
-        print("\(i) X \(j) = \(i * j)")
-        
+        print("\(i) X \(j) = \(i*j)")
     }
 }
 
@@ -120,54 +136,26 @@ for i in 2...9 {
  ===================================================================**/
 
 
-func arithMeticFunction(_ number: Double...) -> Double {
+func arithMeticAverageFunction(_ number: Double...) -> Double {
     
-    var sum = 0.0
+    var total: Double = 0.0
     
-    for i in number {
+    
+    for n in number {
         
-        sum += i
-        
-    
+        total += n
         
     }
     
-    return Double(sum) / Double(number.count)
-
     
+    return total / Double(number.count)
     
 }
 
 
-print(arithMeticFunction(1,3,5,7,9,11,13,15))
 
-/*
+arithMeticAverageFunction(1,2,3,4,5,6)
 
-func makeAverage(nums: Int...) -> Double {
-    var sum = 0
-    
-    for i in nums {
-        sum += i
-    }
-    
-    return Double(sum) / Double(nums.count)
-}
-
-makeAverage(nums: 4, 2, 7)
-
-*/
-
-// 주의점
-
-// 1) 가변 파라미터 주의
-
-// (파라미터의 갯수가 정해지지 않은 경우의 input을 정의하는 법)
-
-// 2) 실수형으로 리턴
-
-// 정수라도 평균으로 결과값이 나온다 하면,
-
-// 보통 실수의 형태로 나올 가능성이 크므로.. 실수형으로 리턴하는 부분 주의 ⭐️ (정수형으로 리턴하면 안됨)
 
 /**==================================================================
  
@@ -180,6 +168,18 @@ makeAverage(nums: 4, 2, 7)
    (힌트: 문자열로 반환하려면, 함수 안에서 변환의 과정이 한번 필요하겠네요.)
  
  ===================================================================**/
+
+
+func twoPlusFunctionString(num1: Int, num2: Int) -> String {
+    
+    
+    
+    return String(num1 + num2)
+    
+}
+
+
+twoPlusFunctionString(num1: 1, num2: 1)
 
 
 func stringFunction(a: Int, b: Int) -> String {
@@ -195,20 +195,6 @@ func stringFunction(a: Int, b: Int) -> String {
 }
 
 print(stringFunction(a: 10, b: 5))
-
-
-/*
- 
- func add(a: Int, b: Int) -> String {
-     
-     return String(a + b)
- }
-
-
- print(add(a: 3, b: 4))
- 
- 
- */
 
 
 /**==================================================================
@@ -229,7 +215,6 @@ print(stringFunction(a: 10, b: 5))
 
 // (두 숫자를 바꾸기 위해서는 함수 내부에서 상수로 사용하면 안되고, 직접 변수의 주소 전달이 필요)
 
-
 var num1 = 123
 
 var num2 = 456
@@ -243,8 +228,7 @@ func swapFunction(a: inout Int, b: inout Int) {
     
     b = temp
  
-    
-    
+
 }
 
 

@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <playground version='6.0' target-platform='ios' display-mode='rendered' buildActiveScheme='true' importAppTypes='true'>
     <pages>
-        <page name='2.옵셔널'/>
         <page name='1.함수'/>
+        <page name='2.옵셔널'/>
+        <page name='3.컬렉션'/>
+        <page name='4.열거형'/>
+        <page name='5.시험'/>
     </pages>
 </playground>
