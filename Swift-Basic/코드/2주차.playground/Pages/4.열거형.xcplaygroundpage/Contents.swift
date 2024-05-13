@@ -394,3 +394,600 @@ case .profile2(position: let p, isRightFoot: let i):
 default:
     break
 }
+
+/*: ## 옵셔널 타입에 대한 정확한 이해
+ - 스위프트의 옵셔널(Optional) 타입
+ ---
+ */
+/**==========================
+ 
+ 옵셔널 타입 이라는 것은 내부적으로는 case가 구현이 되어 있는데
+ 
+ .some case의 연관값이 지정된 케이스와
+ 
+ .none case가 이렇게 두 가지 케이스가 구현되어 있는 것이 바로 옵셔널 타입이라는 것이다.
+ 
+ 
+ - 옵셔널 타입의 내부 구현
+ 
+   enum Optional<Wrapped> {     // 제네릭 문법
+       case some(Wrapped)
+       case none
+   }
+ 
+ 결론: 옵셔널 타입이라는 것은 내부적으로 열거형으로 구현이 되어 있는 것이다.
+ 
+============================**/
+
+//:> 예시: 옵셔널 타입이라는 것은 이러한 열거형으로 구현 되어 있음
+
+enum Optional {
+    
+    case some(Int)
+    
+    case none
+}
+
+var num1: Int? = 7
+
+// 열거형(한정된 사례)
+
+// Optional.some(7): 실제 내부 구현
+
+var n1: Optional = Optional.some(7)
+
+// Optional.none: 실제 내부 구현
+
+var n2 = Optional.none
+
+// 연관값: 구체적인 정보를 저장, 카테고리와 같은 개념
+
+// if let 바인딩의 내부 구현 모습:연관값을 꺼내서 쓰는 것
+
+switch num1 {
+    
+case .some(let a):  // let a = 7
+    
+    // 열거형 case 패턴을 활용해서, 내부 연관값을 꺼냄
+    
+    print(a)
+    
+case .none:
+    
+    print("nil")
+     
+     // print(num1!)
+}
+
+
+//:> 결론: 옵셔널 타입이라는 것은 내부적으로 열거형으로 구현이 되어 있는 것이다.
+// nil이라는 것은 값이 없음을 나타내는 키워드. 진짜 값이 없는게 아니고 나타내는 것
+
+// 그래서 사실은 none이었던 것이고 none인 경우에 강제로 값을 벗기면 실제 값이 메모리에 없기 때문에 에러 발생
+
+// 결국 none이라는 것은 열거형의 어떤 케이스일 뿐이다.
+
+
+/*
+ 
+ if let 바인딩 실제 내부 구현 모습: 결국 연관값을 꺼내서 쓰는 것이라고 이해하면 됨
+ 
+ switch num1 {
+
+ case Optional.some(let a):
+     
+    print(a)
+     
+ case Optional.none:
+     
+    print("nil")
+     
+ }
+ 
+ */
+ 
+
+// .none은 명시적인 열거형으로 표현한 것이고, 일반적으로는 값이 없다는 의미의 nil키워드를 사용할뿐
+
+//:> .none과 nil은 완전히 동일
+
+/*: ## 열거형과 Switch문
+ - 열거형의 정의와 Switch문을 통한 활용
+ ---
+ */
+
+//:> 열거형에 대한 구체적인 처리는 스위치(switch)문과 함께 쓸때, 사용성이 높아짐
+// 로그인 타입을 정의
+
+enum LoginProvider: String {
+    
+    case email
+    case facebook
+    case google
+}
+
+let userLogin = LoginProvider.facebook
+
+
+// 열거형은 항상 스위치문과 쓰인다고 생각해도 무방하다.
+
+// 열거형은 한정된 사례로 만든 타입이고,
+
+// 스위치문은 표현식에 대한 분기처리에 최적화
+
+switch userLogin {                   // 3가지로 분기처리
+    
+case .email:
+    
+    print("이메일 로그인")
+    
+case .facebook:
+    
+    print("페이스북 로그인")
+    
+case .google:
+    print("구글 로그인")
+    
+}
+
+
+
+
+// 물론 특정한 경우도 처리 가능
+
+if LoginProvider.email == userLogin {
+    
+    print("이메일 로그인")
+    
+}
+
+/*: ## 열거형에 (연관값이 없고), 옵셔널 열거형의 경우
+ - switch문의 편의성 (열거형 case 패턴):Enumeration Case Pattern
+ ---
+ */
+// 열거형은 if문이 아닌 switch문으로 처리한다고 생각하면 된다.
+
+// 열거형의 선언
+
+/*
+ 
+ 옵셔널 열거형이라는 것은 열거형 타입 그 자체에 ?를 붙였다는 의미이다.
+ 
+ 열거형 내부에 열거형이 나열되어 있는 코드
+ 
+ */
+
+enum SomeEnum {
+    
+    case left
+    
+    case right
+    
+}
+
+
+// 타입을 다시 옵셔널 열거형으로 선언 ⭐️
+
+let x: SomeEnum? = .left
+
+
+/**==================================================
+ 
+ [SomeEnum?의 의미] 옵셔널 열거형
+ 
+ - 값이 있는 경우 .some ===> 내부에 다시 열거형 .left /.right
+ 
+ - 값이 없는 경우 .none ===> nil
+ 
+=====================================================**/
+
+
+// 원칙
+
+switch x {
+    
+case .some(let value):
+    
+    // Optional.some(let value) = Optional.some(SomeEnum.left)  ⭐️
+    switch value {
+    case .left:
+        print("왼쪽으로 돌기")
+    case .right:
+        print("오른쪽으로 돌기")
+    }
+case .none:
+    
+    print("계속 전진")
+}
+
+
+
+// 편의적 기능 제공 ⭐️
+
+switch x {
+case .some(.left):
+    print("왼쪽으로 돌기")
+case .some(.right):
+    print("오른쪽으로 돌기")
+case .none:
+    print("계속 전진")
+}
+
+
+
+// 전체적으로 full name으로 풀어서 쓴다면..
+
+/*
+ 
+ switch x {
+ case Optional.some(SomeEnum.left):
+     print("왼쪽으로 돌기")
+ case Optional.some(SomeEnum.right):
+     print("오른쪽으로 돌기")
+ case Optional.none:
+     print("계속 전진")
+ }
+ 
+ */
+
+/*: ---
+ - 스위치문의 편의성
+ ---
+ */
+
+//:> switch문에서 옵셔널 열거형 타입을 사용할때, 벗기지 않아도 내부값 접근가능
+
+// 스위치문은 옵셔널 열거형 타입의 사용시, 편의성을 제공
+
+
+switch x {     // 예전에는 x! 라고 써줘야 했음 (스위치문에서 옵셔널 타입도 ok)
+case .left:
+    print("왼쪽으로 돌기")
+case .right:
+    print("오른쪽으로 돌기")
+case nil:
+    print("계속 전진")
+}
+
+/*: ## 열거형에 연관값이 있는 경우
+ - 1. 연관값(Associated Values)이 있는 경우와 switch문 (열거형 case 패턴) - Enumeration Case Pattern
+ ---
+ */
+
+/**==========================================
+ 
+ - 연관값이 있는 열거형의 활용 (열거형 case 패턴) ⭐️
+ 
+ - 구체적 정보(연관값)를 변수에 바인딩(let/var가능)하는 패턴
+ 
+ [열거형 case 패턴]
+ 
+ - case Enum.case(let 변수이름):
+ 
+ - case let Enum.case(변수이름):
+ 
+ [스위치문 뿐만 아니라, 조건문/반복문에서도 활용가능]
+ 
+ - 1) switch문 (대부분)
+ 
+ - 2) if / guard / for-in / while (필요한 경우)
+ 
+ ===========================================**/
+
+// 연관값이 있는 열거형 - 구체적인 정보가 연관값에 들어 있음
+
+// 구체적인 정보를 꺼내서 사용해야하는, 로직 구현의 문제와 연관
+
+
+// 이름, 국적, 나이, 키, ,몸무게, 포지션, 득점, 어시스트
+
+
+
+enum MyFCBarcelona {
+    
+    case profile1(name: String, nation: String)
+    
+    case profile2(age: Int, height: Double, weight: Double)
+    
+    case profile3(position: String, goals: Int, assist: Int)
+    
+}
+
+var myProfile1 = MyFCBarcelona.profile1(name: "라민 야말", nation: "스페인")
+
+var myProfile2 = MyFCBarcelona.profile2(age: 2007, height: 181.7, weight: 61.0)
+
+var myProfile3 = MyFCBarcelona.profile3(position: "인사이드 포워드", goals: 6, assist: 9)
+
+switch myProfile1 {
+case .profile1(let name, let nation):
+    print("\(name) 선수의 국적은 \(nation) 입니다!!!")
+case .profile2(let age, let height, let weight):
+    print("이 선수의 키는\(height)cm이며 몸무게는 \(weight)Kg입니다. 그리고 나이는 \(age)년생 입니다.")
+case .profile3(let position, let goals, let assist):
+    print("이 선수의 포지션은 \(position)이며 득점과 어시스트는 \(goals), \(assist) 입니다.")
+default:    // 대부분 default문이 필요하기도 함
+    break
+}
+
+
+// 연관값을 가지고 있는 열거형의 경우, 원하는 로직으로 잘 정의해서 처리해야하는 것에 주의
+
+/*: ---
+ - 2.연관값(Associated Values)이 있는 경우, if / guard / for-in / while 문 (열거형 case 패턴)
+ ---
+ */
+
+
+// 값 하나를 사용하기 위해서, 스위치문을 전체를 다 써야하는 불편함이 있었음
+
+switch myProfile2 {
+
+case .profile2(let age, let height, let weight):
+    print("이 선수의 키는\(height)cm이며 몸무게는 \(weight)Kg입니다. 그리고 나이는 \(age)년생 입니다.")
+default:
+    break
+}
+
+
+//:> 특정 케이스만 다루기 위해서 if문이나 반복문(for문) 사용 가능
+enum Computer {                         // 3가지로 정의
+    
+    case cpu(core: Int, ghz: Double)
+    
+    case ram(Int, String)
+    
+    case hardDisk(gb: Int)
+    
+}
+
+
+var chip = Computer.cpu(core: 8, ghz: 3.1)
+
+chip = Computer.hardDisk(gb: 128)    // 256
+
+
+
+// if문에서도 스위치문에서 사용하는 case문과 같이 사용 가능 ⭐️
+
+if case Computer.hardDisk(gb: let gB) = chip {
+    
+    print("\(gB)기가 바이트 하드디스크임")
+}
+
+
+
+if case Computer.hardDisk(gb: let gB) = chip, gB == 256 {    // 처리를 다양하게 활용 가능
+    
+    print("256기가 바이트 하드디스크임")
+}
+
+
+
+
+
+
+let chiplists: [Computer] = [
+    .cpu(core: 4, ghz: 3.0),
+    .cpu(core: 8, ghz: 3.5),
+    .ram(16, "SRAM"),
+    .ram(32, "DRAM"),
+    .cpu(core: 8, ghz: 3.5),
+    .hardDisk(gb: 500),
+    .hardDisk(gb: 256)
+]
+
+
+
+for case let .cpu(core: c, ghz: h) in chiplists {    // 배열중에서 특정 케이스만 뽑아서 활용 가능 ⭐️
+    print("CPU칩: \(c)코어, \(h)헤르츠")
+}
+
+
+// 일반 for문과 비교 =====> 모든 경우
+
+for chip in chiplists {
+    print("\(chip)")
+}
+
+
+/*: ---
+ - 열거형 케이스 패턴(for문) - 옵셔널타입 요소 배열
+ ---
+ */
+// 옵셔널 타입을 포함하는 배열에서 반복문을 사용하는 경우
+
+let arrays: [Int?] = [nil, 2, 3, nil, 5]
+
+for case .some(let number) in arrays {
+    
+    print("Found a \(number)")
+    
+}
+
+
+/*: ## 옵셔널 패턴(Optional Pattern)
+ - 옵셔널 타입에서 열거형 케이스 패턴을 더 간소화한 옵셔널 패턴(Optional Pattern)
+ ---
+ */
+
+//:> 열거형 내부에 "연관값"을 사용시 ➞ 1) 열거형 케이스 패턴 / 2) 옵셔널 패턴
+
+let a: Int? = 1
+
+
+// 1) 열거형 케이스 패턴 (앞에서 배운)
+
+switch a {
+case .some(let z):
+    print(z)
+case .none:  // nil이라고 써도됨
+    print("nil")
+}
+
+
+// 2) 옵셔널 패턴 (현재 배울)
+
+switch a {
+case let z?:      // .some을 조금 더 간소화하는 문법   // let z? = Optional.some(a)
+    print(z)
+case nil:         // .none 이라고 써도됨
+    print("nil")
+}
+
+/*:---
+ - 옵셔널 패턴의 사례(열거형 케이스 패턴과 비교)
+ ---
+ */
+// 옵셔널타입으로 선언
+
+let num2: Int? = 7
+
+print(num)
+
+
+
+// 1) 열거형 케이스 패턴
+
+switch num2 {
+case .some(let x):      // let x = num
+    print(x)
+case .none:
+    break
+}
+
+
+// 2) 옵셔널 패턴 (.some을 ? 물음표로 대체 가능한 패턴)
+
+switch num2 {
+case let x?:           // let x? = Optional.some(num)
+    print(x)
+case .none:
+    break
+}
+
+
+
+// 특정 사례만 다루는 (if문) ================================
+
+// 1) 열거형 케이스 패턴
+
+if case .some(let x) = num2 {
+    print(x)
+}
+
+
+
+// 2) 옵셔널 패턴 (.some을 ? 물음표로 대체 가능한 패턴)
+
+if case let x? = num2 {        // "옵셔널(?) 물음표를 띄어내고, x 상수로 보자"의 의미라고 생각하면 됨
+    print(x)
+}
+
+
+/*: ---
+ - 옵셔널 패턴(for문) - 옵셔널타입 요소 배열
+  ---
+ */
+
+// 옵셔널 타입을 포함하는 배열에서 반복문을 사용하는 경우, 옵셔널 패턴을 사용하면 편리함
+
+let arrays1: [Int?] = [nil, 2, 3, nil, 5]
+
+
+
+// 1) 열거형 케이스 패턴
+
+for case .some(let number) in arrays1 {
+    print("Found a \(number)")
+}
+
+
+
+// 2) 옵셔널 패턴
+
+for case let number? in arrays1 {
+    print("Found a \(number)")
+}
+
+/*:## Undknown 키워드
+ - 만약, 열거형의 케이스가 늘어난다면 항상 올바른 처리를 하고 있다고 말할 수 있을까?
+ ---
+ */
+
+// 만약에 로그인의 경우의 수가 늘어난다면 (Non-frozen 열거형 / 얼지않은)
+
+// (프로젝트에서 실제 늘어날 수 있는 경우가 많음)
+
+enum LoginProvider1: String {      // 3가지 케이스 ===> 4가지 케이스
+    case email
+    case facebook
+    case google
+    case kakaotalk
+}
+
+
+let userLogin1 = LoginProvider1.email
+
+
+
+// 스위치문은 (특히, 열거형)표현식에 대한 분기처리에 최적화
+
+// (다만, 열거형의 케이스가 늘어나는 경우에 대한 안정성 보장은 별개)
+
+switch userLogin1 {                // 처리하는 방식을 조금 변형
+case .email:
+    print("이메일 로그인")
+case .facebook:
+    print("페이스북 로그인")
+// case .google:
+//    print("구글 로그인")
+default:
+    
+    // default블럭만 추가해두는 것이 안전할까? ⭐️
+    
+    print("구글 로그인")
+}
+
+// 여기서는 간단히 눈에 보일 수 있지만, 실제 프로젝트에서는 찾기 힘듦
+
+
+
+/*: > 처리하는 로직이 항상 옳다는 보장을 하지 못함
+ - 에러는 나지 않을 수 있지만, 로직이 옳다고 할 수 없음
+ 
+ */
+
+
+
+/*: ---
+ - @unknown 어트리뷰트를 활용하는 방법 - Swift 5.0 ~
+ ---
+ */
+
+/**===================================================
+ - @unknown 키워드를 default블럭에 추가해둠
+ 
+ - switch문에서 열거형의 모든 케이스를 다루지 않는 경우,
+   스위치문에서 모든 열거형의 케이스를 다루지 않았다고
+   경고를 통해 알려줌 ===> 개발자의 실수 가능성을 컴파일 시점에 알려줌
+ 
+ - "Switch must be exhaustive"로 알려줌
+ =====================================================**/
+
+// unknown: 알려지지 않은
+
+
+switch userLogin1 {
+case .email:
+    print("이메일 로그인")
+case .facebook:
+    print("페이스북 로그인")
+case .google:
+    print("구글 로그인")
+@unknown default:
+    print("그 외의 모든 경우")
+}
+
+
+
