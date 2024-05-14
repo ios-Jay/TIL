@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<playground version='6.0' target-platform='ios' display-mode='rendered' buildActiveScheme='true' importAppTypes='true'>
+    <pages>
+        <page name='1.프로토콜'/>
+        <page name='2.메서드 디스패치'/>
+        <page name='3.중첩 타입'/>
+        <page name='4.Self 키워드'/>
+        <page name='5.클로저'/>
+        <page name='6.고차함수'/>
+        <page name='7.함수형 프로그래밍'/>
+    </pages>
+</playground>
