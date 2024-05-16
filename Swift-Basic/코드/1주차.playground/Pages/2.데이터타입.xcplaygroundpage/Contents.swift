@@ -81,7 +81,7 @@ let str1: String = "안녕하세요"
 
 
 
-/*: ## 2) 타입 주석(Tpe Annotation)
+/*: ## 2) 타입 주석(Type Annotation)
  - 변수를 선언하면서, 타입도 명확하게 지정하는 방식
  ---
  */
