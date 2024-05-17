@@ -11,6 +11,8 @@ import UIKit
 
 // 포함될 데이터의 갯수를 마음대로 정의하기 나름
 
+// 멤버(데이터의 종류 및 갯수)는 튜플을 만들때 결정되므로 "추가"/"삭제" 불가
+
 let twoNumbers: (Int, Int) = (1, 3)
 
 type(of: twoNumbers)
@@ -23,7 +25,7 @@ var profile = ("이름", 30, "거주지")
 
 type(of: profile)
 
-// 멤버(데이터의 종류 및 갯수)는 튜플을 만들때 결정되므로 "추가"/"삭제" 불가
+
 
 
 /*:----
@@ -69,6 +71,7 @@ if fcBarcelonaPlayer.0 == "쥘 쿤데" && fcBarcelonaPlayer.1 == 23 {
 if fcBarcelonaPlayer == ("쥘 쿤데" , 23) {
     
     print("Fc 바르셀로나 소속의 등번호 \(fcBarcelonaPlayer.1)번 \(fcBarcelonaPlayer.name) 선수 입니다.")
+    
 }
 
 
