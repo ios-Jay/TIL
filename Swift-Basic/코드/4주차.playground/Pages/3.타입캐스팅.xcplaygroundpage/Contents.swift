@@ -84,7 +84,7 @@ undergraduate1.major    //  추가적으로
 
 
 /*: ---
- - 인스턴스 타입을 검사하는 - is 연산자 (type check operator)
+ - 인스턴스 타입을 검사하는 - is 연산자 (Type Check Operator)
  ---
  */
 
@@ -111,7 +111,7 @@ person1 is Student               // false
 person1 is Undergraduate         // false
 
 
-// 학생 인스턴스는 대학생 타입은 아니다.  (사람/학생 타입니다.)
+// 학생 인스턴스는 대학생 타입은 아니다.  (사람/학생 타입이다.)
 
 student1 is Person               // true
 
