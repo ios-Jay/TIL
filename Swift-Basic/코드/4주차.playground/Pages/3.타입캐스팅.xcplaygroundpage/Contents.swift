@@ -102,7 +102,7 @@ undergraduate1.major    //  추가적으로
 =====================================**/
 
 
-// 사람 인스턴스는 학생/대학생 타입은 아니다. (사람 타입이다.)
+// 사람 인스턴스는 학생/대학생 타입은 아니다.(사람 타입이다.)
 
 person1 is Person                // true
 
@@ -111,7 +111,7 @@ person1 is Student               // false
 person1 is Undergraduate         // false
 
 
-// 학생 인스턴스는 대학생 타입은 아니다.  (사람/학생 타입이다.)
+// 학생 인스턴스는 대학생 타입은 아니다.(사람/학생 타입이다.)
 
 student1 is Person               // true
 
@@ -161,7 +161,7 @@ print(studentNumber)
 
 
 /*: ---
- - 인스턴스 타입의 (메모리구조에 대한) 힌트를 변경하는 - as 연산자 (type cast operator)
+ - 인스턴스 타입의 (메모리구조에 대한) 힌트를 변경하는 - as 연산자 (Type Cast Operator)
  ---
  */
 //:> as 연산자
@@ -234,22 +234,25 @@ person.email
 
 // 그런데, 왜 studentId 와 major 속성에는 접근이 되지 않을까? ⭐️
 
-// person2변수에는 Person타입이 들어있다고 인식되는 것임
+// person변수에는 Person타입이 들어있다고 인식되는 것임
 
 // ===> 그래서 접근불가 ===> 접근하고 싶다면 메모리구조에 대한 힌트(타입)를 변경 필요
 
 
 //:> as? / as! (다운캐스팅)
 
-let ppp: Undergraduate? = person as? Undergraduate  // Undergraduate? 타입
+let pBox: Undergraduate? = person as? Undergraduate  
 
-if let ppp = person as? Undergraduate {
+// Undergraduate? 타입
+
+if let pBox = person as? Undergraduate {
     
-    ppp.id
-    ppp.major
-    ppp.email
-    ppp.name
-    ppp.studentId
+    pBox.id
+    pBox.major
+    pBox.email
+    pBox.name
+    pBox.studentId
+    
 }
 
 if let newPerson = person as? Undergraduate {
