@@ -396,3 +396,292 @@ var someInt = 3
 
 someInt.square()    // 9
 
+// ---
+
+
+/*: ## 3) 멤버의 확장(생성자)
+ - 3.생성자의 확장
+ ---
+ */
+
+//:> 클래스 - 편의 생성자만 구현 가능 / 구조체(값타입) - 지정생성자 형태로도 (자유롭게) 생성자 구현 가능
+
+/**=========================================================================
+ 
+  [클래스]
+ 
+ - 편의 생성자만 추가 가능 (즉, 본체의 지정생성자를 호출하는 방법으로만 구현 가능) ⭐️
+ 
+ - 지정생성자 추가 불가 / 소멸자 추가 불가 (항상 본래의 클래스에서 정의해야 함)
+
+ 
+  [구조체]
+ 
+ - 구조체는 (원래) 편의 생성자가 존재하지 않고, 상속과 관련이 없기 때문에
+ 
+   지정생성자의 형태로도 (자유롭게) 생성자 구현 가능 ⭐️
+ 
+   (1) (편의 생성자와 비슷한) 생성자를 추가하여 본체의 지정 생성자를 호출하는 방법으로도 구현 가능하고
+ 
+   (2) 새롭게 지정생성자 형태로 구현하는 것도 가능
+ 
+  [구조체 참고 사항]
+ - (본체) 직접 생성자 구현하면, 기본 생성자 init() /멤버와이즈 생성자 제공 안되는 것이 원칙
+ 
+ - (예외) (본체) 모든 저장속성에 기본값제공 + (본체에 직접) 생성자를 구현하지 않았다면, 확장에서는 괜찮음
+ 
+ - (즉, 확장에서 생성자를 구현해도, 본체에는 여전히 기본 생성자/멤버와이즈 생성자가 자동 제공
+ 
+    되고 본체의 기본 생성자/멤버와이즈 생성자 호출하는 방식으로의 구현도 가능)
+=========================================================================**/
+
+/*: ---
+ - 구조체 - 생성자 확장의 예시
+ ---
+ */
+
+// 포인트 구조체, 사이즈 구조체
+
+struct Point {
+    
+    var x = 0.0, y = 0.0
+    
+    init() {    // 클래스의 편의 생성자와 사실상 동일한 개념
+        
+        self.init(x: 0.0, y: 0.0)
+    }
+    
+    init(x: Double = 0.0, y: Double = 0.0) {
+        
+        self.x = x
+        
+        self.y = y
+    }
+    
+}
+
+
+
+struct Size {
+    
+    var width = 0.0, height = 0.0
+}
+
+
+
+// Rect구조체
+
+struct Rect {     // 기본값 제공/생성자 구현안함  ===> 기본 생성자 / 멤버와이즈 생성자가 자동 제공 중
+    
+    var origin = Point()
+    
+    var size = Size()
+    
+}
+
+
+
+let defaultRect = Rect()    // 기본생성자
+
+// Rect(origin: Point(x: <#T##Double#>, y: <#T##Double#>), size: Size(width: <#T##Double#>, height: <#T##Double#>))
+
+let memberwiseRect = Rect(origin: Point(x: 2.0, y: 2.0),
+                          
+                          size: Size(width: 5.0, height: 5.0))    // 멤버와이즈 생성자
+
+
+
+extension Rect {
+    
+    // 센터값으로 Rect 생성하는 생성자 만들기
+    
+    // 예외적인 경우 (저장속성에 기본값 + 본체에 생성자 구현 안한 경우, 여전히 기본생성자/멤버와이즈 생성자 제공)
+    
+    init(center: Point, size: Size) {
+        
+        let originX = center.x - (size.width / 2)
+        
+        let originY = center.y - (size.height / 2)
+        
+        // (1) 본체의 멤버와이즈 생성자 호출 방식으로 구현 가능
+        
+        self.init(origin: Point(x: originX, y: originY), size: size)
+        
+        // (2) 직접 값을 설정하는 방식으로도 구현 가능
+        //self.origin = Point(x: originX, y: originY)
+        //self.size = size
+    }
+}
+
+
+// 새로 추가한 생성자로 인스턴스 생성해보기
+
+let centerRect = Rect(center: Point(x: 4.0, y: 4.0),
+                      size: Size(width: 3.0, height: 3.0))
+
+/*: ---
+ - 클래스 - 생성자 확장의 예시
+ ---
+ */
+
+// UIColor 기본 생성자
+
+// UIColor(red: <#T##CGFloat#>, green: <#T##CGFloat#>, blue: <#T##CGFloat#>, alpha: <#T##CGFloat#>)
+
+var color = UIColor(red: 0.3, green: 0.5, blue: 0.4, alpha: 1)
+    
+
+
+extension UIColor {      // 익스텐션 + 편의생성자 조합
+    
+    convenience init(color: CGFloat) {   // Float   / Double
+        
+        // CGFloat(Core Graphics:애플에서 미리 구현한 그래픽을 표현하는 실수형 데이터 타입)
+        
+        self.init(red: color/255, green: color/255, blue: color/255, alpha: 1)
+    }
+
+}
+
+
+// 일단 아주 쉽게 객체 생성하는 방법을 제공 가능해짐
+
+UIColor(color: 1)
+
+//UIColor(red: <#T##CGFloat#>, green: <#T##CGFloat#>, blue: <#T##CGFloat#>, alpha: <#T##CGFloat#>)
+
+//: ---
+
+/*: ## 4) 멤버의 확장(서브스크립트)
+ - 4. 서브스크립트의 확장
+ ---
+ */
+
+// 확장으로 서브스크립트 추가 가능함
+
+// Int(정수형 타입)에 서브스크립트 추가해보기 (기본자리수의 n자리의 십진수 반환하도록 만들기)
+
+// 예시
+
+// 123456789[0]    // 9
+
+// 123456789[1]    // 8
+
+// 123456789[2]    // 7
+
+
+extension Int {
+    
+    subscript(num: Int) -> Int {
+        
+        var decimalBase = 1
+        
+        for _ in 0..<num {
+            
+            decimalBase *= 10
+        }
+        
+        return (self / decimalBase) % 10
+        
+    }
+}
+
+
+
+123456789[0]      // (123456789 / 1) ==> 123456789 % 10 ==> 나머지 9
+
+123456789[1]      // (123456789 / 10) ==> 12345678 % 10 ==> 나머지 8
+
+123456789[2]      // (123456789 / 100) ==> 1234567 % 10 ==> 나머지 7
+
+123456789[3]      // (123456789 / 1000) ==> 123456 % 10 ==> 나머지 6
+
+
+
+
+// Int값에 요청된 자릿수가 넘어간 경우 0 반환
+
+746381295[9]     // 0
+
+
+// 앞에 0 이 존재 하는 것과 같음
+
+746381295[12]
+
+//: ---
+
+/*: ## 5) 멤버의 확장(중첩타입)
+ - 5. 중첩 타입(Nested Types)
+ ---
+ */
+
+// 클래스, 구조체 및 열거형에 새 중첩 유형을 추가 가능
+
+// Int(정수형 타입)에 종류(Kind) ====> 중첩 열거형 추가해 보기
+
+extension Int {
+    
+    enum Kind {       // 음수인지, 0인지, 양수인지
+        
+        case negative, zero, positive
+    }
+    
+    var kind: Kind {    // 계산 속성으로 구현
+        switch self {
+        case 0:                   // 0인 경우
+            return Kind.zero
+        case let x where x > 0:   // 0보다 큰경우
+            return Kind.positive
+        default:                  // 나머지 (0보다 작은 경우)
+            return Kind.negative
+        }
+    }
+}
+
+
+
+
+let aa = 1
+aa.kind       // 숫자 1의 (인스턴스) 계산속성을 호출 ====> 해당하는 열거형(Int.Kind타입)을 리턴
+
+let b = 0
+b.kind
+
+let c = -1
+c.kind
+
+
+Int.Kind.positive
+Int.Kind.zero
+Int.Kind.negative
+
+
+let d: Int.Kind = Int.Kind.negative
+
+
+
+
+
+// 위의 확장을 통해서, 어떤 Int값에서도 중첩 열거형이 쓰일 수 있음
+
+// 위의 확장을 활용한 ===> 함수 만들어보기
+
+func printIntegerKinds(_ numbers: [Int]) {
+    for number in numbers {
+        switch number.kind {
+        case .negative:
+            print("- ", terminator: "")
+        case .zero:
+            print("0 ", terminator: "")
+        case .positive:
+            print("+ ", terminator: "")
+        }
+    }
+    print("")
+}
+
+
+
+// 함수 실행해보기
+
+printIntegerKinds([3, 19, -27, 0, -6, 0, 7])      // + + - 0 - 0 +
