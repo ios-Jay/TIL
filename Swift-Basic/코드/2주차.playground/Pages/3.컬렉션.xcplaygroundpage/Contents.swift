@@ -85,3 +85,358 @@ numsArray.randomElement()
 
 numsArray.swapAt(0, 1)
 
+/*
+ 
+ 결국 핵심은 배열은 데이터 바구니 라는 것.
+ 
+ 그러니 숫자를 셀 수도 있고 비어 있는 여부를 확인할 수도 있어야 한다.
+ 
+ 또 그 안에 어떤 데이터가 있는지, 무엇을 포함하는지를 확인하는 것이고
+ 
+ 랜덤으로 데이터를 뽑을 수도, 데이터의 순서를 바꾸는 기능도 있는 것이다.
+ 
+ */
+
+/*: ---
+ - 배열의 각 요소(element)에 대한 접근
+ ---
+ */
+
+numsArray = [2, 4, 6, 8, 10]
+
+stringArray = ["손흥민", "이강인", "김민재", "황희찬", "황인범", "조규성"]
+
+// [] 서브스크립트 문법(대괄호를 이용한 특별한 함수)
+
+
+stringArray[0]
+
+stringArray[1]
+
+stringArray[2]
+
+stringArray[3]
+
+stringArray[1] = "배준호"
+
+print(stringArray)
+
+stringArray.first
+
+// 리턴값 String?  ====> 빈 배열이라면 nil 리턴
+
+// 일반적으로 first에 접근했을때 값이 없을수도 있는 경우가 있기 때문에 옵셔널 타입으로 주는 것이다.
+
+// 지금 실제로는 값이 존재하므로 강제추출연산자!를 사용하여 string.first!로 프린트 할 수 있다.
+
+stringArray.last
+
+// 배열의 시작 인덱스
+
+stringArray.startIndex
+
+// 시작하는 인덱스를 알려줌. 무조건 0이 나온다. 시작하는 인덱스는 언제나 0
+
+// startIndex가 0이기도 하지만 사실 메모리 주소를 의미한다.
+
+stringArray.endIndex
+
+// stringArray.endIndex.advanced(by: -1)
+
+
+// endIndex는 배열로 저장되는 메모리 공간의 끝의 주소를 의미한다.
+
+// 교재의 그림을 참고 하면 직관적으로 이해할 수 있다.
+
+// 따라서 배열의 범위를 벗어나지 않으려면 항상 마이너스 1을 해줘야 한다.
+
+/*: ---
+ - 삽입하기 (insert)
+ ---
+ */
+var hangul = ["가", "나", "다", "라", "마", "바", "사"]
+
+// 앞 또는 중간에 삽입하기
+
+hangul.insert("4", at: 4)
+
+hangul.insert("1", at: hangul.endIndex)
+
+hangul.insert(contentsOf: ["a", "b", "c"], at: 0)
+
+/*: ---
+ - 교체하기 (replace)
+ ---
+ */
+var alphabet = ["A", "B", "C", "D", "E", "F", "G"]
+
+// 요소 교체하기
+
+alphabet[0] = "a"
+
+
+// 범위를 교체하기
+
+alphabet[0...2] = ["x", "y", "z"]
+
+
+
+// 원하는 범위 삭제
+
+alphabet[0...1] = []
+
+alphabet
+
+
+
+
+
+// 교체하기 함수 문법
+
+alphabet.replaceSubrange(0...2, with: ["a", "b", "c"])
+
+/*: ---
+ - 추가하기(Append)
+ ---
+ */
+alphabet = ["A", "B", "C", "D", "E", "F", "G"]
+
+
+alphabet += ["H"]
+
+// print(alphabet)
+
+// 추가하기 함수 문법
+
+alphabet.append("H")   // 맨 마지막에 추가하는 것
+
+alphabet.append(contentsOf: ["H", "I"])
+
+
+
+// alphabet.append(7)   // 에러 ===> 동일한 자료형만 저장가능함
+
+
+/*: ---
+ - 삭제(제거)하기 (remove)
+ ---
+ */
+alphabet = ["A", "B", "C", "D", "E", "F", "G"]
+
+
+// 서브스크립트 문법으로 삭제
+
+alphabet[0...2] = []   //빈배열 전달하면 해당 범위가 삭제
+
+// 요소 한개 삭제
+
+alphabet.remove(at: 2)  // 삭제하고, 삭제된 요소 리턴
+
+//alphabet.remove(at: 8)    // 잘못된 인덱스 전달 ====> 에러발생
+
+// 요소 범위 삭제
+
+alphabet.removeSubrange(0...2)
+
+
+
+alphabet = ["A", "B", "C", "D", "E", "F", "G"]
+
+
+// alphabet.removeFirst()
+
+// 맨 앞에 요소 삭제하고 삭제된 요소 리턴 (리턴형 String)
+
+alphabet.removeFirst(2)   // 앞의 두개의 요소 삭제 ===> 리턴은 안함
+
+
+alphabet.removeLast()
+
+// 맨 뒤에 요소 삭제하고 삭제된 요소 리턴 (리턴형 String)
+
+alphabet.removeLast(2)
+
+
+
+
+// alphabet.removeFirst()    // 리턴형 String
+
+// 리턴형이 옵셔널 스트링이 아니고 스트링이다. 이 말은 무조건 문자열을 반환한다는 뜻.
+
+// 무조건 문자열을 반환한다는 뜻은 잘못된 경우를 고려하지 않는다는 뜻.
+
+// 즉, nil이 나올 가능성이 없다고 이야기를 하는 것.
+
+// alphabet = [] --> 이런 경우는 백퍼센트 에러가 발생할 수 밖에 없다.
+
+// 배열이 비어있는지도 잘 확인해보고 삭제(제거)해야함 =======> 에러
+
+// alphabet.removeLast()     // 리턴형 String
+
+// 배열의 요소 모두 삭제(제거)
+
+alphabet.removeAll()
+
+// 메모리 공간을 만드는 일을 다시 해줘야 함. 그래서 조금 더 느림
+
+alphabet.removeAll(keepingCapacity: true)
+
+// 저장공간을 일단은 보관해 둠. (안의 데이터만 일단 날림)
+
+// 내용물은 지우되, 우리가 사용하던 이 메모리 공간은 그냥 일단 유지는 해둔다는 뜻.
+
+/*
+ 메모리 공간을 그대로 놔두면 다시 할당을 할때 훨씬 내부적으로 더 빨리 할당을 할 수 있다. 기존의 메모리 공간이 그대로 남아있기 때문.
+ */
+
+/*: ---
+ - 배열의 기타 기능
+ ---
+ */
+
+var nums = [1, 2, 3, 1, 4, 5, 2, 6, 7, 5, 0]
+
+
+
+// 배열을 정리해보기
+
+// 1) 배열을 직접 정렬하는 메서드  sort  (동사)
+
+// 2) 정렬된 새로운 배열을 리턴  sorted (동사ing/동사ed)
+
+// 새로 변경된 배열을 반환 하기 때문에 원본 배열 자체는 건드리지 않는 것이 sorted
+
+// 옵션 키 눌러서 타입 확인
+
+
+
+nums.sort()   // 배열을 직접 정렬 (오름차순) (배열리턴 하지 않음)
+
+nums.sorted()    //오름차순으로 정렬
+
+
+nums.reverse()   // 요소를 역순으로 정렬  (배열리턴 하지 않음)
+nums.reversed()
+
+
+nums.sorted().reversed()
+
+// 새로운 배열은 생성하지 않고,
+
+// 배열의 메모리는 공유하면서 역순으로 열거할 수 있는 형식을 리턴
+
+
+
+// 배열을 랜덤으로 섞기
+
+//nums.shuffle()    // 요소의 순서 랜덤으로 직접 바꾸기
+
+//nums.shuffled()
+
+
+
+
+/*: ---
+ - 활용
+ ---
+ */
+
+// 특정 요소 한개 삭제하기
+
+// ===> 직접 삭제는 불가 (1) 인덱스 찾아서, (2) 인덱스에 해당하는 요소 지우기
+
+var puppy1 = ["p", "u", "p", "p", "y"]
+
+
+
+if let lastIndexOfP = puppy1.lastIndex(of: "p") {
+    
+    puppy1.remove(at: lastIndexOfP) // == 3
+    
+//    at: 3이라고 사용하지 않는 이유: 배열에 p가 없을 수도 있기 때문(앱 개발 시)
+    
+//    즉, 데이터 바구니가 플레이그라운드가 아닌 앱 개발에서는 복잡하기 때문.
+}
+// 가장 뒤에서부터 먼저 있는 p를 찾았을 때
+
+
+
+
+if !nums.isEmpty {            // "!"(true ====> false)  (false ====> true)
+    print("\(nums.count) element(s)")
+} else {
+    print("empty array")
+}
+
+
+
+
+// 배열의 배열 접근
+
+var data = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+
+// 옵션을 눌러 타입 확인:내부에는 배열 타입으로 되어 있고, 그 안에 또 배열 타입
+
+
+data[0][2]
+
+
+/*: ---
+ - 반복문과의 결합
+ ---
+ */
+
+//:> enumerate: 영어로 열거하다는 뜻
+
+// 각 요소에 차례대로 접근, 배열과 반복문은 필연적으로 많이 쓰임
+
+for i in nums {
+    
+    print(i)
+    
+}
+
+
+
+
+//:> enumerate: 영어로 열거하다는 뜻
+
+// enumerated() ===> 열거된 것들을 Named 튜플 형태로 한개씩 전달
+
+// 데이터 바구니이기 때문에,
+
+// 실제 번호표(index)까지 붙여서, 차례대로 하나씩 꺼내서 사용하는 경우가 많을 수 있어서 아래처럼 활용 가능
+
+nums = [10, 11, 12, 13, 14]
+
+
+// (offset: 0, element: 10) -->인덱스(순서까지 같이 뽑아가지고 열거)
+
+
+for tuple in nums.enumerated() {
+    
+    // print(tuple)
+    
+    print("\(tuple.0) - \(tuple.1)")
+    
+    // offset, element 로도 사용 가능
+}
+
+
+
+for (index, word) in nums.enumerated() {
+    
+    // 바로 뽑아내기
+    
+    print("\(index) - \(word)")
+}
+
+
+
+
+for (index, value) in nums.enumerated().reversed() {
+    
+    // 거꾸로 뒤에서 부터
+    
+    print("\(index) - \(value)")
+}
