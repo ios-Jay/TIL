@@ -261,6 +261,54 @@ class someSubClass: someSuperClass {
  - 초기화(Initialization)와 생성자(Initializer)
  ---
  */
+class Dog {
+    var name: String
+    var weight: Double
+    
+    init(name: String, weight: Double) {
+        self.name = name
+        self.weight = weight
+    }
+}
+
+//: 초기화 메서드(생성자)
+/**================
+ 
+ - 함수의 구현이 특별한 키워드인 init으로 명명됨
+ - 인스턴스를 생성 과정: 저장 속성에 대한 초기값을 설정하여 사용 가능한 상태가 되는 것
+ - 생성자 메서드 실행의 목적은, 모든 저작 속성 초기화를 통한 인스턴스 생성
+ - 즉, 생성자 실행의 종료시점에는 모든 저장 속성에 대한 값이 저장되어 있어야 함
+ - 설계도(클래스, 구조체, 열거형)를 실제로 사용하기 위해 인스턴스를 찍어내는 과정
+ - 생성자 실행시, 메모리 내에 실제 인스턴스를 생성하는 복잡한 코드가 자동 구현
+ =================**/
+
+//: 오버로딩 지원
+// 다양한 파라미터 조합으로 생성자를 여러개 구현 가능
+
+// 여러가지 방식으로 인스턴스를 생성하는 방법을 제공하는 것
+
+//:> 생성자를 직접 구현하지 않으면: (사용자 정의(직접) 구현이 원칙) → 개발자의 의도가 우선
+/**=======================================
+ 
+ (1) 모든 저장 속성에 기본값(또는 옵셔널 타입) 전제
+ 
+ - 클래스: 기본생성자 init() 제공 (초기화 방법 필요)
+ - 구조체: 기본생성자 init() 제공(초기화 방법 필요 + 멤버와이즈 이니셜라이저도 제공(편의를 위해 기본 제공 / 새로운 값으로 설정 가능)
+ 
+ (2) 일부 저장 속성에 기본값(또는 옵셔널 타입)전제
+ 
+ - 클래스: 원칙적으로 일부 값만 가지고, 생성자 구현하지 않는 방법이 존재하지 않음
+ -  구조체: 멤버와이즈 이니셜라이저 기본 제공
+ (편의를 위한 기본 제공 ➡︎ 일부 / 전체 저장 속성 새로운 값으로 설정 가능)
+ 
+ - 멤버와이즈 이니셜라이저: 직접 구현하지 않아도, 자동으로 제공해주는 저장 속성 설정가능한 생성자
+ ==========================================*/
+
+
+
+
+
+
 
 /**=====================================================================
  
@@ -281,6 +329,14 @@ class someSubClass: someSuperClass {
  - 소멸자 ==> 인스턴스가 해제되기 전에 해야할 기능을 정의하는 부분
  
 =====================================================================**/
+
+
+
+
+
+
+
+
 
 
 
@@ -392,7 +448,7 @@ struct Color1 {
 }
 
 
-var c2 = Color1(red: <#T##Double#>, green: <#T##Double#>, blue: <#T##Double#>)
+// var c2 = Color1(red: <#T##Double#>, green: <#T##Double#>, blue: <#T##Double#>)
 
 
 
@@ -430,3 +486,166 @@ var c2 = Color1(red: <#T##Double#>, green: <#T##Double#>, blue: <#T##Double#>)
  - 클래스의 경우에는, 생성자가 상속하고 관련이 있기 때문에 복잡
  
 =====================================================**/
+
+//: ---
+
+
+/*: ## 4) 생성자(Initializer)
+ ---
+ - 구조체 vs 클래스 생성자(Initializer)
+ ---
+  */
+/**=======================================
+ - (지정)생성자   <=====>  편의 생성자
+
+
+ [구조체의 생성자]
+ - 1) 지정 생성자, (자동제공되는 멤버와이즈생성자)
+ - 2) 실패가능생성자
+
+
+ [클래스의 생성자]
+ - 1) 지정 생성자
+ - 2) 편의 생성자  (상속과 관련)
+ - 3) 필수 생성자  (상속과 관련)
+ - 4) 실패가능생성자
+=========================================**/
+
+//: ---
+
+/*: ## 구조체 생성자
+ - 여러 개의 지정 생성자 구현
+ ---
+ */
+
+//:> 구조체나 클래스, 둘다 아래처럼 구현 가능(오버로딩을 지원하므로)
+// 그렇지만, 이런 방식이 올바른 구현 방법은 아님
+
+struct Color2 {
+    let red, green, blue: Double
+    
+    
+    init() {    // 기본 생성자. 기본값을 설정하면 자동으로 제공됨
+        
+        red = 0.0
+        green = 0.0
+        blue = 0.0
+        
+    }
+    
+    init(white: Double) {
+        red = white
+        green = white
+        blue = white
+    }
+    
+    init(red: Double, green: Double, blue: Double) {
+        self.red = red
+        self.green = green
+        self.blue = blue
+    }
+}
+
+/*: ---
+ - 구조체(값타입)의 지정생성자의 구현
+ ---
+ */
+struct Color3 {
+    
+    let red, green, blue: Double
+    
+    init() {      // 구조체는 다른 생성자를 호출하는 방식도 가능 ⭐️
+        //red = 0.0
+        //green = 0.0
+        //blue = 0.0
+        self.init(red: 0.0, green: 0.0, blue: 0.0)
+    }
+
+    init(white: Double) {    // 구조체는 다른 생성자를 호출하는 방식도 가능 ⭐️
+        //red   = white
+        //green = white
+        //blue  = white
+        self.init(red: white, green: white, blue: white)
+    }
+    
+    init(red: Double, green: Double, blue: Double) {
+        self.red   = red
+        self.green = green
+        self.blue  = blue
+    }
+}
+
+// 값타입(구조체)의 경우 자체 지정생성자 작성할 때
+
+
+
+// 생성자 내에서 self.init(...)를 사용하여 다른 이니셜라이저를 호출하도록 할 수 있음
+
+//: ---
+/*: ## 클래스 생성자
+ ---
+ - 클래스의 지정(Designated) vs 편의 생성자(Convenience)
+ ---
+ */
+class Color4 {
+    
+    let red, green, blue: Double
+    
+    convenience init() {
+        self.init(red: 0.0, green: 0.0, blue: 0.0)
+        //self.init(white: 0.0)
+    }
+
+    convenience init(white: Double) {
+        //red   = white
+        //green = white
+        //blue  = white
+        self.init(red: white, green: white, blue: white)
+    }
+    
+    init(red: Double, green: Double, blue: Double) {
+        self.red   = red
+        self.green = green
+        self.blue  = blue
+    }
+    
+}
+
+/**========================================================================
+ - 일단 편의 생성자는 편리하게 생성하기 위한 서브(Sub)생성자라고 보면됨(메인이 아닌)
+ - ===> (메인) 지정 생성자에 의존하는 방식 (지정 생성자 호출)
+
+ - 지정 생성자는 모든 속성을 초기화 해야함
+ - 편의 생성자는 모든 속성을 초기화 할 필요가 없음(편의적 성격)
+
+  ⭐️
+ - 클래스는 상속을 지원하므로, 변수가 여러개 이고,
+ - 여러 지정 생성자를 지원했을때 상속 관계에서 개발자가 실수할 수 있는 여러가지 가능성이 있음.
+ - 따라서, 초기화 과정을 조금 간편하게 만들고,
+ - 상속관계에서 개발자가 실수 할 수 있는 여러가능성을 배제하기 위한 생성자임
+
+ - 반대로 말하자면 모든 속성을 초기화하지 않는다면 ===> 편의생성자로 만드는 것이 복잡도나 실수를 줄일 수 있음
+ - 결국, 생성자의 가능한 중복을 없애고 다른 지정 생성자를 호출하는 패턴으로 구현해야 함
+ ==========================================================================**/
+
+
+
+
+//:> (이미 모든 속성을 초기화하는 지정생성자가 있다면) 모든 속성을 초기화하지 않는 경우 편의생성자로 구현을 권장
+
+var colorLiteral = Color3()
+
+colorLiteral.red
+colorLiteral.green
+colorLiteral.blue
+
+
+var colorLiteral1 = Color3(white: 0.5)
+
+colorLiteral1.red
+colorLiteral1.green
+colorLiteral1.blue
+
+
+// var colorLiteral2 = Color3(red: <#T##Double#>, green: <#T##Double#>, blue: <#T##Double#>)
+
