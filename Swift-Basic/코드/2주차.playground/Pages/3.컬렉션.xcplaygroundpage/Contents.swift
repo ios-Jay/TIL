@@ -816,3 +816,307 @@ for (_, value) in dict {
  ================================================================**/
 
 
+var set: Set = [1, 1, 2, 2, 3, 3, 3]
+
+// 중복 X, 순서 X
+
+print(set)
+
+
+/*:---
+ - Set을 언제 사용하는가?
+ ---
+ */
+
+//:> Set의 값과 Dictionary의 키값은 Hashable
+
+// 정렬순서보다 검색속도가 중요한 경우에 사용
+
+// 검색에 내부적으로 Hashing 알고리즘 사용
+
+// (hashing ===> 특정값을 고정된 길이의 값으로 변환하는 기법으로 인덱싱과 암호화에서 자주 사용됨)
+
+
+// 또는 유일하면서, 집합의 수학적인 개념(합집합/교집합/차집합/대칭차집합)을 이용할 필요가 있을 때 (집합을 계산하기 간편한 함수를 내장)
+
+
+/*: ---
+ - Set의 타입 표기
+ ---
+ */
+// 단축문법
+
+let set1: Set = [1, 2, 3]
+
+// 정식문법
+
+let set2: Set<Int> = [1, 2, 3]
+
+/*: ---
+ - 빈 Set의 생성
+ ---
+ */
+let emptySet: Set<Int> = []
+
+let emptySet1 = Set<Int>()
+/*: ---
+ - Set의 기본 기능
+ ---
+ */
+set.count
+
+set.isEmpty
+
+
+set.contains(1)
+
+set.randomElement()
+/*: ---
+ - 업데이트 (update) - 삽입하기 / 교체하기 / 추가하기
+ ---
+ */
+
+//:> Set는 append 함수를 제공하지 않음
+// append는 순서가 있는 컬렉션의 끝에 추가하는 개념
+
+// Set은 순서가 없기 때문에, update를 통해서 추가
+
+// 서브스크립트 관련 문법 없음 ⭐️
+
+
+
+// (정식 기능) 함수 문법
+
+set.update(with: 1)     // Int?
+
+
+set.update(with: 7)     // 새로운 요소가 추가되면 ====> 리턴 nil
+
+
+/*: ---
+ - 삭제(제거)하기 (remove)
+ ---
+ */
+var stringSet: Set<String> = ["Apple", "Banana", "City", "Swift"]
+
+
+// 요소 삭제해 보기
+
+stringSet.remove("Swift")     // "Swift" 삭제한 요소를 리턴
+
+stringSet                     // ["Hello", "Apple"]
+
+
+
+// 존재하지 않는 요소를 삭제해보기
+
+stringSet.remove("Steve")       // nil    (에러는 발생하지 않음)
+
+
+
+// 전체요소 삭제
+
+stringSet.removeAll()
+
+stringSet.removeAll(keepingCapacity: true)
+
+//: ---
+
+/*: ## Set의 활용
+ - Set의 정의
+ ---
+ */
+var a: Set = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+var b: Set = [1, 3, 5, 7, 9]
+
+var c: Set = [2, 4, 6, 8, 10]
+
+var d: Set = [1, 7, 5, 9, 3]
+/*: ---
+ - Set의 비교
+ ---
+ */
+a == b
+
+a != b
+
+// Set(정렬되지 않은 컬렉션)은 어짜피 순서는 중요하지 않음
+
+b == d  // 항상 true
+
+
+/*: ---
+ - 부분집합 / 상위집합 / 서로소
+ --
+ */
+a = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+b = [1, 3, 5, 7, 9]     // 홀수 모음
+
+c = [2, 4, 6, 8, 10]    // 짝수 모음
+
+d = [1, 7, 5, 9, 3]     // 홀수 모음
+
+
+
+// super: 상위의 개념, sub: 하위의 개념
+
+// 부분집합 여부를 판단
+
+b.isSubset(of: a)   // true 부분집합 여부     "b는 a의 부분집합인가?"
+
+b.isStrictSubset(of: a)
+
+// false 진부분집합 여부: "a랑 동일하지 않으면서 부분집합인가?" 즉 a와 b가 같지 않다는 것을 물어보는 것
+
+
+
+// 상위집합
+
+a.isSuperset(of: b)    // true 상위집합 여부
+
+a.isStrictSuperset(of: b)   // false  진상위집합 여부
+
+
+// 서로소 여부:완전히 서로 다른가?
+
+d.isDisjoint(with: c)
+
+/*: ---
+ - 합집합
+ ---
+ */
+a = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+b = [1, 3, 5, 7, 9]
+
+c = [2, 4, 6, 8, 10]
+
+d = [1, 7, 5, 9, 3]
+
+
+
+var unionSet =  b.union(c)
+
+
+//b.formUnion(c)      // 원본변경
+
+/*: ---
+ - 교집합
+ ---
+ */
+var interSet = a.intersection(b)
+
+// a.formIntersection(b)      // 원본변경
+
+/*: ---
+ - 차집합
+ ---
+ */
+var subSet = a.subtracting(b)
+
+// a.subtract(b)       // 원본변경
+/*: ---
+ - 대칭차집합
+ ---
+ */
+var symmetricSet = a.symmetricDifference(b)
+
+// a.formSymmetricDifference(b)       // 원본변경
+
+/*: ---
+ - 반복문과의 결합
+ ---
+ */
+let iteratingSet: Set = [1, 2, 3]
+
+
+for num in iteratingSet {
+    
+    // 정렬되지 않은 컬렉션이기 때문에, 실행할때마다 순서가 달라짐
+    
+    print(num)
+}
+
+
+
+/*:---
+ - 기타 유의점
+ ---
+ */
+var newSet: Set = [1, 2, 3, 4, 5]
+
+var newArray: Array = newSet.sorted()
+
+// 정렬이라는 것은 결국 순서가 필요한 것이기에 Set을 바꾼 배열을 리턴
+
+//:> Set을 정렬하면, 배열로 리턴함 (정렬은 순서가 필요하기 때문)
+
+
+/*:---
+ ## 4) KeyValuePairs
+ - 딕셔너리와 유사한 형태이지만, 배열처럼 순서가 있는 컬렉션
+ ---
+ */
+/**========================================================
+ 
+ - 스위프트 5.2 버전에 등장
+ 
+ - 딕셔너리와 비슷한 형태지만, "순서"가 있는 컬렉션
+ 
+
+ - key값이 해셔블(hashable)일 필요없음 (검색 알고리즘상 빠르지 않음)
+ 
+ - key값이 동일한 것도 가능
+ 
+========================================================**/
+
+let introduce: KeyValuePairs = ["first": "Hello", "second": "My Name", "third":"is"]
+
+/*: ---
+ - KeyValuePairs의 기본 기능
+ ---
+ */
+
+introduce.count
+
+introduce.isEmpty
+
+/*:---
+ - 요소애 접근
+ ---
+ 
+ */
+
+// 배열처럼, 인덱스로 접근 가능
+
+// 요소에서는 튜플방식으로 접근
+
+
+introduce[0]
+
+introduce[0].0
+
+
+
+
+//print("\(introduce[0].key)는 \(introduce[0].value) 입니다.")
+
+//print("\(introduce[1].key)는 \(introduce[1].value) 입니다.")
+
+//print("\(introduce[2].key)는 \(introduce[2].value) 입니다.")
+
+/*: ---
+ - 반복문과의 결합
+ ---
+ */
+
+for value in introduce {
+    
+    print("\(value.key)는 \(value.value) 입니다.")
+}
+
+//:> append / remove 같은 기능이 없음
+
+// 딕셔너리이지만, 저장된 순서가 중요할 경우, 또는 데이터가 반복될 경우만 임시적/제한적으로 사용
