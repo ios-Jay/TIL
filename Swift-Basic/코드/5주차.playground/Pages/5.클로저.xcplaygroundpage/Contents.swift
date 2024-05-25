@@ -111,3 +111,76 @@ let closureType = { (param: String) -> String in
 closureType("스티브")
 
 //: ---
+
+/*: ## 함수와 클로저의 형태 비교
+ - 클로저의 형태
+ ---
+ */
+// 함수의 형태
+
+func add(num1: Int, num2: Int) -> Int {
+    let result = num1 + num2
+    
+    return result
+}
+
+add(num1: 3, num2: 7)
+
+// 클로저의 형태
+
+let _ = { (n1: Int, n2: Int) -> Int in
+    let result = n1 + n2
+    return result
+}
+
+
+// 클로저의 형태(타입 추론이 가능한 경우)
+
+
+let _: (Int,Int) -> Int = {(number1, number2) in
+    let result = number1 + number2
+    return result
+}
+
+/*: ## 클로저의 형태
+ - 가장 많이 사용하는 형태: 리턴형에 대한 표기를 생략 가능
+ ---
+ */
+let aClosure2 = { (str: String) in
+    
+    return "Hello \(str)"
+    
+}
+
+// 리턴을 통해 컴파일러가 아웃풋을 추론함. 따라서 리턴형에 대한 표기를 생략 가능
+
+let aClosure3: (String) -> (String) = { (str) in
+    
+    // 아규먼트 레이블을 따로 사용하지 않음
+
+        return "Hello \(str)"
+    
+}
+
+let aClosure4 = {
+    
+    // () -> ()
+    print("This is this🤣")
+}
+
+
+/*: ---
+ - 파라미터의 타입의 생략도 대부분 가능하다.
+ ---
+ */
+let closureType5 = { str in
+    
+    // 컴파일러가 타입 추론 가능한 경우 생략 가능
+    
+    return str + "!"
+    
+    // "!"가 문자열 이기 때문에 컴파일러가 str 역시 문자열이라고 추론. 따라서 파라미터의 타입도 생략이 가능해짐
+    
+}
+
+//: ---
