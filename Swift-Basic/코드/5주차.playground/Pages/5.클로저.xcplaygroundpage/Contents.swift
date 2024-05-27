@@ -184,3 +184,187 @@ let closureType5 = { str in
 }
 
 //: ---
+
+/*: ## 클로저의 사용
+ - 클로저를 왜 사용하는가? - 1
+ ---
+ */
+// 1) (클로저를 파라미터로 받는 함수)정의
+
+func closureParamFunction(closure: () -> ()) {
+    print("프린트 시작")
+    closure()
+}
+
+// 파라미터로 사용할 함수 / 클로저를 정의
+
+func printSwiftFunction() {     // 함수를 정의
+    print("프린트 종료")
+}
+
+let printSwift = { () -> () in      // 클로저를 정의
+    
+    print("프린트 종료")
+    
+}
+
+// 함수를 파라미터로 넣으면서 실행 (그동안에 배운 형태로 실행한다면)
+
+closureParamFunction(closure: printSwiftFunction)
+
+closureParamFunction(closure: printSwift)
+
+// 2) 함수를 실행할때 클로저 형태로 전달 (클로저를 사용하는 이유)
+
+// 함수를 실행할떄 파라미터로 클로저를 정의를 하면서 바로 전달: 클로저를 사용하는 이유
+
+// 정의를 하면서 전달을 하므로 굳이 이름이 필요 X
+
+// 일반적으로 클로저를 사용하는 형태: 정의를 하면서 전달하는 형태로 많이 쓰인다.
+
+// 클로저가 이름이 필요 없는 이유: 함수를 실행할때 전달하는 형태로 사용하기 때문에 이름이 필요가 없음
+
+// 함수를 실행할 때 파라미터로 전달하는 함수 ->Callback을 받기 때문에, 콜백함수라고 부름
+
+closureParamFunction(closure: { () -> () in
+    
+    print("프린트 종료")
+    
+    // 본래 정의된 함수를 실행시키면서, 클로저를 사후적으로 정의 가능
+    
+})                              // (활용도가 늘어남)
+
+
+
+closureParamFunction(closure: { () -> () in // () -> () in 생략 가능
+    
+    print("프린트 종료 - 1")
+    
+    print("프린트 종료 - 2")
+})
+
+/*: ---
+ - 클로저를 왜 사용하는가? - 2
+ ---
+ */
+
+// 1) (클로저를 파라미터로 받는 함수)정의
+
+func closureCaseFunction(a: Int, b: Int, closure: (Int) -> Void) {
+    
+    let c = a + b
+    
+    closure(c)
+    
+}
+
+closureCaseFunction(a: 7, b: 7, closure: { param  -> () in       // 14 -> ...
+    print("hello: \(param)")
+})
+
+
+
+
+// 2) 함수를 실행할 때 (클로저 형태로 전달)
+
+closureCaseFunction(a: 5, b: 2, closure: { (n) in
+    
+    // 사후적 정의: 클로저를 사용하는 이유(커스터 마이징의 범위가 넓어짐)
+    
+    print("이제 출력할께요: \(n)")
+    
+})
+
+
+
+closureCaseFunction(a: 5, b: 2) {(number) in      // 사후적 정의
+    
+    print("출력할까요? \(number)")
+    
+}
+
+
+closureCaseFunction(a: 5, b: 3) { (number) in      // 사후적 정의
+    
+    print("출력")
+    
+    print("출력")
+    
+    print("출력")
+    
+    print("값: \(number)")
+    
+}
+
+/*: ---
+ - 여러가지 예시로 정확하게 이해하기
+ ---
+ */
+
+let print1 = {
+    
+    print("1")
+}
+
+let print2 = {
+    
+    print("2")
+}
+
+let print3 = {
+    
+    print("3")
+}
+
+
+// 함수의 정의
+
+func multiClosureFunction(closure1: () -> Void, closure2: () -> Void) {
+    
+    closure1()
+    closure2()
+}
+
+
+
+
+
+// 함수의 실행
+
+multiClosureFunction(closure1: print1, closure2: print2)
+
+multiClosureFunction(closure1: print2, closure2: print3)
+
+
+multiClosureFunction(closure1: {
+    
+    print("1")
+    
+}, closure2: {
+    
+    print("2")
+})
+
+
+
+// 함수의 정의
+
+func performClosure(closure: () -> ()) {
+    print("시작")
+    closure()
+    print("끝")
+}
+
+
+
+// 함수의 실행
+
+performClosure(closure: {
+    
+    print("중간")
+})
+
+
+
+
+
