@@ -205,6 +205,7 @@ var player1 = "발데"    // 식별자: player1
 
 var player2 = "쿤데"    // 식별자: player2
 
+
 //: ---
 
 /*: ## 9) 토큰(Token)
