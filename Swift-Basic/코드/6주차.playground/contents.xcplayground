@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<playground version='6.0' target-platform='ios' display-mode='rendered' buildActiveScheme='true' importAppTypes='true'>
+<playground version='6.0' target-platform='ios' display-mode='raw' buildActiveScheme='true' importAppTypes='true'>
     <pages>
-        <page name='2.에러처리'/>
         <page name='1. 메모리 관리'/>
+        <page name='2.에러처리'/>
+        <page name='3.네트워크'/>
+        <page name='4.제네릭'/>
     </pages>
 </playground>
