@@ -80,7 +80,7 @@ let str: String = ""   // 빈문자열 저장가능
 let str1: String = "안녕하세요"
 
 
-
+//: ---
 /*: ## 2) 타입 주석(Type Annotation)
  - 변수를 선언하면서, 타입도 명확하게 지정하는 방식
  ---
@@ -115,7 +115,7 @@ var pi = value
 
 Double.pi
 
-
+//: ---
 
 /*: ## 3) 타입 추론(Type Inference)
  - 타입을 지정하지 않아도, 컴파일러가 타입을 유추해서 (알아서 알맞는 타입으로 저장하는) 방식
@@ -141,7 +141,7 @@ var isPrime = false
 
 
 
-
+//: ---
 
 /*: ## 4) 타입 안정성(Type Safety)
  - 스위프트는 데이터 타입을 명확하게 구분하여 사용하는 언어
@@ -168,6 +168,8 @@ let d3 = 0.14
 //  소수 + 정수를 더할 수 없다.
 
 // "안녕" + 5 를 더할 수 없다.
+
+//: ---
 
 /*: ## 5) 타입(형) 변환(Type Conversion)
  - 타입을 변환해서 사용할 수 있는 방법은 있다!
@@ -201,7 +203,7 @@ if let myNumberOfInt = numberOfInt {
 let piOfString = "3.141592"
 
 
-let piOfInt = Int(pi)
+let piOfInt = Int(piOfString)
 
 
 
@@ -226,7 +228,7 @@ print(dataTypeNumber)
 
 //:> 결국 데이터를 메모리라는 공간에 어떤 크기 / 어떤 형태로 저장할 것인지에 관한 문제
 
-
+//: ---
 
 /*: ## 6) 타입 애일리어스(Type Alias)
  - 별칭 붙이기: 수학에서 치환과 유사
