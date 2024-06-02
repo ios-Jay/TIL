@@ -325,7 +325,7 @@ score >= 70 ? print("Pass") : print("Fail")
 // 주로 값을 대입하는 경우 (주로 값에서 2가지에서 한가지를 선택하는 경우)
 
 //:> 조건에 따라 선택이 두가지인 경우 -> 삼항연산자를 떠올리자
-let profileName: String = "사비시몬스"
+let profileName: String = "차비시몬스"
 
 
 profileName.count >= 5 ? print("1") : print("2")
