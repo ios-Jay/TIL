@@ -110,7 +110,7 @@ let koreaFootballPlayer: String = "이강인"
 
 // koreaFootballPlayer = "뎀벨레"
 
-// -> 변하지 않는 데이터이므로 당연히 에러 발생
+// → 변하지 않는 데이터이므로 당연히 에러 발생
 
 print(koreaFootballPlayer)
 

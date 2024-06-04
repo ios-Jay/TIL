@@ -86,7 +86,7 @@ func plusFunction(num1: Int, num2: Int) -> Int {
 
 // 약 70여개의 키워드가 존재
 
-// var, if, func, return, nil, class, struct....
+// var, if, func, return, nil, class, struct, final....
 
 //: ---
 
@@ -227,7 +227,7 @@ var player2 = "쿤데"    // 식별자: player2
 //: ---
 /*: ## 10) 표현식(Expression)
  
- * 값, 변수, 연산자의 조합으로 하나의 결과값으로 평가되는 코드 단위
+ * 값, 변수, 연산자의 조합으로 하나의 결과값으로서 평가되는 코드 단위
  
  ---
  
