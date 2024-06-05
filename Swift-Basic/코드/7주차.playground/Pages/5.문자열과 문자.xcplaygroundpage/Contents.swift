@@ -235,6 +235,10 @@ nsWord.length
 
 let singleLineString = "These are \nthe same."       // 줄바꿈을 원하면, \n 입력   \ (Escape character)
 
+// 문자열 내부에서는 아무렇게나 쌍따옴표를 사용할 수 없음:\"를 사용해야함
+
+print("\"These are \nthe same.\"")
+
 print(singleLineString)
 
 
@@ -249,7 +253,8 @@ print(singleLineString)
  - 5) 마지막(""")는 들여쓰기의 기준의 역할
 =============================================================**/
 
-
+// \n을 사용하지 않더라도 """에서는 자동으로 줄바꿈이 됨
+// \를 사용하면 줄바꿈을 없앨 수도 있음
 let quotation = """
 The White Rabbit put on his spectacles.  "Where shall I begin,
 please your Majesty?" he asked.
@@ -293,6 +298,8 @@ print(wiseWords)
 //:> 샵 기호(#)으로 문자열 앞뒤를 감싸면 내부의 문자열을 글자 그대로 인식
 
 // 샵의 갯수를 개발자 임의로 조절 가능
+
+// 당연히 샾의 밸런스(갯수)를 맞춰 줘야 함
 
 
 var name = #"Steve"#
