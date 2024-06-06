@@ -644,4 +644,136 @@ print(result) // "10,000,000"
 
 //: ***
 
+/*: ## Substring
+ - 서브 스트링(Substring)의 개념
+ ---
+ */
+// 서브 스트링: 메모리를 공유하는 개념
 
+// 문자열은 결국에는 어떤 메모리 공간을 차지하고 있는데, 이 메모리 공간 차지를 항상 복사해서 사용을 하지는 않는다.
+
+// 또 메모리 공간을 쓰고 또 메모리 공간을 쓰고 이렇게 사용을 하지 않고 스위프트 내부적으로 뭔가 아주 잘 설계를 이미 똑똑한 사람들이 애플에서 해놨더니
+
+// 메모리 공간을 공유하는 개념이 있다는 것이다.
+
+// 굳이 새로운 이 hello를 담기 위해서 새로운 메모리 공간을 쓰지 않고 기존의 메모리 공간에서 그냥 앞의 글자만 이렇게 사용을 하는 것 즉,
+
+// 이렇게 뽑아가지고 사용을 하는 것이 바로 서브 스트링이라는 개념이다. 그래서 메모리 공간을 공유하고 있는 것이다.
+
+var greeting = "Hello, world!"
+
+let index: String.Index = greeting.firstIndex(of: ",") ?? greeting.endIndex    // ,(콤마)의 인덱스
+
+let beginning: String.SubSequence = greeting[..<index]// 처음부터 인덱스까지
+
+// "Hello"   // 타입 확인해보기 ⭐️  String.SubSequence 타입
+
+
+/**======================================================
+ - prefix(...)메서드 등의 사용시
+ - "Hello"란 beginning문자열은 greeting 문자열의 메모리공간을 공유
+ - 스위프트 내부적으로 최적화되어 있음
+ - 수정 등이 일어나기 전까지 메모리 공유
+ - 오랜기간 저장하기 위해서는, 새롭게 문자열로 저장할 필요
+ ========================================================**/
+
+
+var myword: String.SubSequence = greeting.prefix(5)
+
+myword     // String.SubSequence 타입
+// "Hello"
+
+
+greeting = "Happy"    // 원본을 바꾸는 순간 Substring 문자열들은 새로운 문자열 공간을 만들어서 저장
+
+print(beginning)
+print(myword)
+
+
+
+myword = greeting.suffix(3)
+
+myword     // String.SubSequence 타입
+// "ppy"
+
+
+
+
+// 아니면 명시적으로 문자열로 변환해서 저장 가능 (서브스트링에서 벗어남)
+
+let newString: String = String(myword)
+
+//: ***
+/*: ## 문자열을 배열로 변환
+ - 문자열의 배열화, (문자열)배열의 문자열화
+ ---
+ */
+
+//:> 문자열(데이터바구니) ⇄ 배열  (쉽게 변형가능)
+
+/**============================================
+ - 문자열 자체도, 여러개의 문자를 담고 있는 데이터이기 때문에
+   쉽게 배열로 변형이 가능하고, 반대 변형도 쉬움
+ 
+ -  String    <====>  [String]   문자열 배열
+ -  String    <====> [Character] 문자 배열
+ ============================================**/
+
+
+var mysomeString = "Swift"
+
+
+// 1) 문자열을 문자열(String) 배열화 하기 ⭐️
+
+var myarray: [String] = mysomeString.map { String($0) }
+print(array)
+
+
+// 2) 문자열을 문자(Character) 배열화 하기
+
+var array2: [Character] = Array(mysomeString)     // [Character]      //typealias Element = Character
+
+
+
+// (참고) 문자열을 문자열(String) 배열화하는 추가적 방법
+var array3: [String] = Array(arrayLiteral: mysomeString)  // [String]
+
+
+
+
+
+// 3) 문자열 배열 [String] =====> 문자열
+
+var mynewString = myarray.joined()
+mynewString = array3.joined()
+
+
+// 4) 문자 배열  [Character] ======> 문자열
+
+var newString2 = String(array2)
+
+/*: ---
+ - (활용 예시) 문자열을 뒤죽박죽 섞는다면?
+ ---
+ */
+
+mysomeString = "Swift"
+
+
+mysomeString.randomElement()     // 문자열에서 랜덤으로 뽑아내는 것 가능
+mysomeString.shuffled()          // 섞어서 문자(Character) 배열로 리턴 ["t", "i", "w", "S", "f"]
+
+
+
+
+//someString.shuffled().joined()     // 불가능 (문자배열 이기때문)
+
+
+var newString3 = String(mysomeString.shuffled())
+print(newString3)
+
+
+// map고차함수를 사용해서 변환 ⭐️
+
+newString3 = mysomeString.map { String($0) }.shuffled().joined()
+print(newString3)
