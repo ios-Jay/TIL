@@ -358,3 +358,290 @@ struct Dog {
 let dog = Dog(name: "초코", weight: 15.0)
 print("\(dog)")      // Dog(name: "초코", weight: 15.0)  출력 형태를 애플이 지정해 놓음
 print(dog)
+
+// dump: 더 자세하게 출력
+dump("\(dog)")
+dump(dog)
+
+/*: ---
+ - 문자열 보간법 사용시, 출력 형태(방법)을 직접 구현도 가능
+ ---
+ */
+
+/**=====================================================
+[애플이 미리 만들어 놓은 프로토콜]
+ - 아래의 프로토콜을 채택해서 구현하면 스트링 인터폴레이션을 직접구현 가능
+ 
+   protocol CustomStringConvertible {
+      var description { get }
+   }
+========================================================**/
+
+//extension Dog: CustomStringConvertible {
+//    var description: String {
+//        return "강아지의 이름은 \(name)이고, 몸무게는 \(weight)kg 입니다."
+//    }
+//}
+
+
+
+// 강아지의 이름은 초코이고, 몸무게는 15.0입니다.
+
+/**=====================================
+- \( ) ====> description 변수를 읽는 것
+========================================**/
+
+/*: ---
+ - Swift5 에서의 문자열 보간법의 동작원리
+ ---
+ */
+
+struct Point {
+    let x: Int
+    let y: Int
+}
+
+
+let pp = Point(x: 5, y: 7)
+print("\(pp)")
+
+
+//extension String.StringInterpolation {
+//    mutating func appendInterpolation(_ value: Point) {
+//        appendInterpolation("X좌표는 \(value.x), Y좌표는 \(value.y)입니다.")
+//    }
+//    
+//    mutating func appendInterpolation(_ value: Dog) {
+//        appendInterpolation("강아지의 이름은 \(value.name), 몸무게는 \(value.weight)키로 입니다.")
+//    }
+//    
+    
+    
+// }
+
+
+
+print("\(pp)")
+
+
+// X좌표는 5, Y좌표는 7입니다.
+
+
+/**=====================================
+- \( ) ====> appendInterpolation()을 실행
+========================================**/
+
+//:> 메서드로 바뀌면서 활용도가 높아짐 (다른 파라미터 지정도 가능)
+
+//extension String.StringInterpolation {
+//
+//    mutating func appendInterpolation(_ value: Point, style: NumberFormatter.Style) {
+//        
+//        // "숫자" <====> "문자" 변환을 다루는 객체
+//        let formatter = NumberFormatter()
+//        formatter.numberStyle = style
+//
+//        // 지정된 스타일로 문자열을 구성
+//        if let x = formatter.string(for: value.x), let y = formatter.string(for: value.y) {
+//            appendInterpolation("X좌표는 \(x) x Y좌표는 \(y)")
+//        }else  {
+//            appendInterpolation("X좌표는\(value.x) x Y좌표는\(value.y)")
+//        }
+//    }
+//    
+//
+//}
+
+// 파라미터를 사용할 수도 있다는 것을 알려주는 예제
+
+//print("\(p)")
+//
+//print("\(p, style: .spellOut)")     // X좌표는 five x Y좌표는 seven
+//
+//print("\(p, style: .percent)")      // X좌표는 500% x Y좌표는 700%
+//
+//print("\(p, style: .scientific)")   // X좌표는 5E0 x Y좌표는 7E0
+//
+////print("\(p, style: .currency)")   //$
+//
+
+/**=============================================
+- \( , style: ) ====> appendInterpolation(_:,style:)을 실행
+================================================**/
+
+
+/**===================================
+(참고용) NumberFormatter.Style 열거형으로 정의
+
+  enum Style : UInt {
+      case none = 0
+      case decimal = 1
+      case currency = 2
+      case percent = 3
+      case scientific = 4
+      case spellOut = 5
+      case ordinal = 6
+      case currencyISOCode = 8
+      case currencyPlural = 9
+      case currencyAccounting = 10
+  }
+=====================================**/
+
+//: ***
+
+/*: ## 숫자(정수/실수) 등을 문자열로 변환 출력하려고 할때
+ - 변수/표현식 등을 포함, 반올림의 구현
+ ***
+ */
+
+// 단순 출력
+
+var pi = 3.1415926
+print("원하는 숫자는 \(pi)")
+
+
+
+// 실제 앱 구현시, 반올림등을 상황이 자주 발생
+
+// "원하는 숫자는 3.14" 라고 출력해야하는 경우 ⭐️
+
+/*: ---
+ - 출력 형식 지정자(Format Specifiers)
+ ---
+ */
+
+// 문자열 생성자를 활용하는 방법
+
+// String(format: <#T##String#>, <#T##arguments: CVarArg...##CVarArg#>)
+
+
+
+var mystring: String = ""
+
+mystring = String(3.1415926)    // 생성자:타입을 변환하는 것이 아니고 새롭게 생성하는 생성자
+//print(mystring)
+
+mystring = "원하는 숫자는 " + String(format: "%.3f", pi)  // 반올림
+//print(mystring)
+
+mystring = "원하는 숫자는 " + String(format: "%.2f", pi)
+//print(mystring)
+
+mystring = "원하는 숫자는 " + String(format: "%.1f", pi)
+//print(mystring)
+
+mystring = String(format: "원하는 숫자는 %.2f", pi)       // %.2f 자리에 pi를 대체
+//print(mystring)
+
+/*: ---
+ - 출력 형식 지정자(Format Specifiers)의 종류
+ ---
+ */
+
+mystring = String(format: "%d", 7)           // %d, %D   ===> 정수
+print(mystring)
+
+mystring = String(format: "%2d", 7)          // 두자리로 표현
+print(mystring)
+
+mystring = String(format: "%02d", 7)         // 두자리로 표현하되, 0포함
+print(mystring)
+
+mystring = String(format: "%07.3f", pi)      // 일곱자리로 표현하되 0과 .(dot) 포함, (소수점아래는 3자리)
+print(mystring)
+
+
+
+var swift = "Swift"
+
+mystring = String(format: "Hello, %@", swift)       // %@  ===> 문자열
+
+print(string)
+
+//:> 절대 외울 필요없음! ➞ 필요할 때 찾아쓰기
+
+
+// 참고 https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/Strings/Articles/formatSpecifiers.html#//apple_ref/doc/uid/TP40004265-SW1
+
+/*: ---
+ - 형식 지정자 활용 예시
+ ---
+ */
+
+// CustomStringConvertible과 결합해서 사용해보기
+
+struct Point1: Codable {
+    var x: Double
+    var y: Double
+}
+
+
+extension Point1: CustomStringConvertible {
+    var description: String {
+        let formattedValue = String(format: "%1$.2f , %2$.2f", self.x, self.y)
+        //let formattedValue = String(format: "%.2f", x) + " , " + String(format: "%.2f", y)
+        return "\(formattedValue)"
+    }
+}
+
+let ppp = Point1(x: 3.1415926, y: 2.5963756)
+
+
+print("\(ppp)")
+
+
+
+
+// 자주 사용하는 경우
+
+var firstName = "Gildong"
+var lastName = "Hong"
+
+var korean = "사용자의 이름은 %2$@ %1$@ 입니다."         // 1$ 첫번째 파라미터, 2$ 두번째 파라미터
+var english = "The username is %1$@ %2$@."
+
+
+mystring = String(format: korean, firstName, lastName)
+print(mystring)
+
+
+mystring = String(format: english, firstName, lastName)
+print(mystring)
+
+/*: ---
+ - 참고: NumberFormatter 클래스를 이용하는 방법
+ ---
+ */
+
+// 소수점 버리기
+let numberFormatter = NumberFormatter()
+numberFormatter.roundingMode = .floor         // 버림으로 지정
+numberFormatter.maximumSignificantDigits = 3  // 최대 표현하길 원하는 자릿수
+
+let value = 3.1415926
+var valueFormatted = numberFormatter.string(for: value)!    // 문자열화시키는 메서드
+print(valueFormatted)   // 3.14
+
+
+
+// 소수점 필수적 표현하기
+numberFormatter.roundingMode = .floor         // 버림으로 지정
+numberFormatter.minimumSignificantDigits = 4  // 최소 표현하길 원하는 자릿수
+
+let value2 = 3.1
+valueFormatted = numberFormatter.string(for: value2)!     // 문자열화시키는 메서드
+print(valueFormatted)     // 3.100
+
+
+
+// 세자리수마다 콤마 넣기 ⭐️
+
+numberFormatter.numberStyle = .decimal  // 십진수
+let price = 10000000
+let result = numberFormatter.string(for: price)!
+print(result) // "10,000,000"
+
+
+//: ***
+
+

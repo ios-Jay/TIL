@@ -135,7 +135,7 @@ numFunction(num1: 3, num2: 7)
 
 
 
-//print(<#T##items: Any...##Any#>, separator: <#T##String#>, terminator: <#T##String#>)
+// print(<#T##items: Any...##Any#>, separator: <#T##String#>, terminator: <#T##String#>)
 
 
 
@@ -177,7 +177,6 @@ someAdd(num: 10)
  */
 
 //:> 함수 내에서 선언한 변수의 Scope(범위) ➞ 함수의 바디로 제한됨
-
 func sumOfNum(n: Int) -> Int {
     
     var sum = 0
@@ -225,7 +224,7 @@ func addFunction(num1: Int, num2: Int) -> Int {
 }
 
 
-//
+
 
 addFunction(num1: 3, num2: 4)
 
@@ -286,7 +285,7 @@ numberPrint(n: 5)
  - 4.리턴타입이 있는 경우, 함수의 실행문의 의미
  ---
  */
-// 리턴 타입이 있는 함수를 호출하는 경우, 함수를 호출하는 것은 표현식 (표현식의 결과는 함수가 리턴하는 값)
+// 리턴 타입이 있는 함수를 호출하는 경우, 함수를 호출하는 것은 표현식(표현식의 결과는 함수가 리턴하는 값)
 
 func nameString() -> String {
     

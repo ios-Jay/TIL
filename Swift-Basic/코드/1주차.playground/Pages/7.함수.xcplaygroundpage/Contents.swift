@@ -82,10 +82,10 @@ func saySomething(name: String) {
 
 // 함수 실행문(Call)
 
-saySomething(name: "개강")
+saySomething(name: "그리즈만")
 
 
-var name = "종강"
+var name = "알바레즈"
 
 
 saySomething(name: name)
