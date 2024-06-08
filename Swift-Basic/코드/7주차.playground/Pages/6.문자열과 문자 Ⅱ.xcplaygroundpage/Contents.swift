@@ -518,3 +518,248 @@ if let _ = "Hello, Swift".range(of: "Swift", options: [.anchored, .backwards]) {
     print("접미어 일치")
 }
 
+/*: ## 문자열 (일부)포함여부 및 앞/뒤 글자의 반환
+ - 문자열에서 일치여부 확인하기
+ ---
+ */
+
+let mystring = "Hello, world!"
+
+
+
+// 전체문자열에서 포함여부
+
+mystring.contains("Hello")
+mystring.lowercased().contains("hello")
+mystring.contains("world")
+
+
+// 접두어/접미어 포함여부
+
+mystring.hasPrefix("Hello")
+mystring.hasPrefix("world")
+mystring.lowercased().hasPrefix("world")
+
+mystring.hasSuffix("!")
+mystring.hasSuffix("world!")
+
+
+
+
+
+// 접두어/접미어 반환 (앞에서 또는 뒤에서 몇글자 뽑아내기)
+
+mystring.prefix(2)
+mystring.suffix(3)
+
+
+// 공통 접두어 반환
+
+mystring.commonPrefix(with: "Hello, swift")
+mystring.commonPrefix(with: "hello", options: [.caseInsensitive])
+
+
+
+// 앞/뒤를 drop시킨 나머지 반환
+
+mystring.dropFirst(3)
+mystring.dropLast(3)
+
+//: ---
+
+/*: ## 정규식 / 정규표현식
+ - 정규식(정규표현식)을 이용한 문자열의 판별
+ ---
+ */
+
+//:> 정규식(正規式)은 "특정한 규칙"을 가진 문자열의 집합을 표현하는 데 사용하는 형식 언어
+
+// (스위프트에만 해당하는 것이 아님)
+
+
+// 올바른 전화번호 형식일까?
+// (정규식 확인하는 코드)
+
+let number = "010-1234-12345"
+
+
+// 정규식 (RawString으로 작성하면 메타문자를 바로 입력가능) ===> 가독성 높아짐
+// (스위프트에서는 \ 백슬레시를 이스케이프 문자로 인식하기 때문)
+
+var telephoneNumRegex = #"[0-9]{3}\-[0-9]{4}\-[0-9]{4}"#
+
+
+if let _ = number.range(of: telephoneNumRegex, options: [.regularExpression]) {
+    print("유효한 전화번호로 판단")
+}
+
+//:> 간단한 정규식 사용
+
+// 정규식에 대한 내용을 찾으려면, 구글 및 유튜브 검색 및 활용
+
+/**=========================================================**/
+  #"[0-9]{3}[- .]?[0-9]{4}[- .]?[0-9]{4}"#   // 전화번호 러프하게
+  #".*@.*\..*"#                              // 이메일 러프하게
+  #"[0-9]{3}\-[0-9]{3}"#                     // 우편번호 러프하게
+/**=========================================================**/
+
+
+
+// 참고
+// https://www.youtube.com/watch?v=Gg0tlbrxJSc
+// https://www.youtube.com/watch?v=-5cnj7q1-YY
+// https://regexr.com/
+// https://regexr.com/5nvc2
+
+//: ---
+
+/*: ## 특정문자의 (검색 및) 제거
+ - 어떻게 문자열에 있는 특정문자들을 제거할 수 있을까?
+ ---
+ */
+
+/**==========================================================
+[특정 문자들을 제거할때 사용하기 위한 메서드]
+ 
+1) 간단하게 앞뒤의 특정 문자를 제거하는 메서드
+ - 문자열.trimmingCharacters(in: <#T##CharacterSet#>)
+
+ 
+2) 문자열의 중간에 특정 문자를 제거하는 방법 ⭐️
+   "해당 특정 문자"를 기준으로 (잘라서) 문자열을 배열로 ===> (다시 배열을) 문자열로
+ 
+ - 문자열.components(separatedBy: <#T##CharacterSet#>).joined()
+=========================================================**/
+//CharacterSet.uppercaseLetters
+
+
+
+
+// 1) 앞뒤의 공백문자의 제거
+
+var userEmail = " my-email@example.com "
+
+var trimmedString = userEmail.trimmingCharacters(in: [" "])
+print(trimmedString)
+// "my-email@example.com" (처음, 마지막의 공백 문자열 제거)
+
+
+
+// CharacterSet 개념을 활용해서
+trimmedString = userEmail.trimmingCharacters(in: .whitespaces)
+print(trimmedString)
+
+
+
+
+// 2) 앞뒤의 특정문자의 제거
+
+var someString = "?Swift!"
+var removedString = someString.trimmingCharacters(in: ["?","!"])
+print(removedString)
+
+
+someString = "?Swi!ft!"
+removedString = someString.trimmingCharacters(in: ["?","!"])
+print(removedString)       // 중간에 있는 !는 제거하지 못함
+
+//:> 중간에 있는 특수문자의 제거 원리: 해당 특수문자를 기준으로 문자열을 배열로 만든다음 → 다시 문자열로 변환
+
+var myname = " S t e v e "
+var removedName = myname.components(separatedBy: " ").joined()    //["", "S", "t", "e", "v", "e", ""]
+print(removedName)
+
+
+
+// 4) (중간에 포함된)특수문자의 제거
+
+var phoneNum = "010-1234-1234"
+var newPhoneNum = phoneNum.components(separatedBy: "-").joined()   // ["010", "1234", "1234"]
+print(newPhoneNum)
+
+
+// 5) 여러개의 특수문자를 한꺼번에 제거
+
+var numString =  "1+2-3*4/5"
+var removedNumString =  numString.components(separatedBy: ["+","-","*","/"]).joined()
+print(removedNumString)
+
+
+
+
+// 6) components(separatedBy:)와 거의 동일한 메서드 split(separator:) 그러나 차이는 있음
+
+var str =  "Hello Swift"
+var arr = str.split(separator: " ")    // 서브스트링으로 리턴함
+print(arr)
+print(arr.joined())
+
+
+// - (1) split은 Substring 배열로 리턴
+str.split(separator: " ")
+
+
+
+// - (2) split은 클로저를 파라미터로 받기도 함 (클로저에서 원하는 함수내용을 정의하면 되므로 활용도가 더 높을 수 있음)
+str.split { $0 == " " }
+
+//str.split(whereSeparator: <#T##(Character) throws -> Bool#>)
+
+/*: ---
+ - (미리 정의된) 특정 문자 집합(Set)의 개념을 이용하면, 조금 더 편하게 사용가능
+ ---
+ */
+
+
+// 구조체로 구현되어 있는
+// 문자집합 (문자열 검색, 잘못된 문자 삭제 등에 주로 활용) (기본적인 Set성격)
+
+/**=========================================
+ [CharacterSet] 유니코드 기준
+ - .symbols                // 기호
+ - .alphanumerics          // 문자 + 숫자
+ - .decimalDigits          // 10진법 숫자
+ - .letters                // 문자 (유니코드상 Letter, Mark 카테고리 해당 문자)
+ - .lowercaseLetters       // 소문자
+ - .uppercaseLetters       // 대문자  ["A", "B", "C", "D", "E" ...]
+ - .whitespaces            // 공백문자 [" "]
+ - ....등등
+ 
+ 참고: https://developer.apple.com/documentation/foundation/characterset
+============================================**/
+
+
+
+// 문자셋을 활용해서
+
+userEmail = " my-email@example.com "
+
+var characterSet = CharacterSet.whitespaces   // 공백문자 집합
+
+trimmedString = userEmail.trimmingCharacters(in: characterSet)
+print(trimmedString)
+
+
+
+
+myname = " S t e v e "
+
+removedName = myname.components(separatedBy: characterSet).joined()
+print(removedName)
+
+
+
+
+var phoneNumbers = "010 1111 2222"
+print(phoneNumbers.components(separatedBy: .whitespaces).joined())
+
+
+//:> 특정 문자열 검색에도 활용가능
+
+myname = "hello+world"
+
+
+if let range = myname.rangeOfCharacter(from: .symbols) {
+    print(myname[range])
+}
+
