@@ -725,6 +725,10 @@ var mysomeString = "Swift"
 
 // 1) 문자열을 문자열(String) 배열화 하기 ⭐️
 
+// 주로 사용하는 예시
+
+mysomeString.map { String($0) }
+
 var myarray: [String] = mysomeString.map { String($0) }
 print(array)
 
@@ -732,7 +736,7 @@ print(array)
 // 2) 문자열을 문자(Character) 배열화 하기
 
 var array2: [Character] = Array(mysomeString)     // [Character]      //typealias Element = Character
-
+// 실제로 잘 사용하지 않음
 
 
 // (참고) 문자열을 문자열(String) 배열화하는 추가적 방법
@@ -773,7 +777,7 @@ var newString3 = String(mysomeString.shuffled())
 print(newString3)
 
 
-// map고차함수를 사용해서 변환 ⭐️
+// map고차함수를 사용해서 변환 ⭐️: 실제로는 이런 방식으로 많이 구현함
 
 newString3 = mysomeString.map { String($0) }.shuffled().joined()
 print(newString3)

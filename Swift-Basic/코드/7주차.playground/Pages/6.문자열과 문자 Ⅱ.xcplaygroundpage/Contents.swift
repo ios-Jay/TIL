@@ -50,6 +50,14 @@ if emptyString == nil {    // 빈 문자열은 nil이 아님 ===> String타입 (
     print("nil")
 }
 
+
+
+
+
+
+
+
+
 /*: ---
  - String의 인덱스(색인/순번) 타입
  ---
@@ -57,6 +65,7 @@ if emptyString == nil {    // 빈 문자열은 nil이 아님 ===> String타입 (
 
 //:>문자열도 Collection 프로토콜(Array / Dictionary / Set)을 따르고 있음 ➞ 데이터바구니
 /**============================================================
+ 
  - 문자열의 인덱스는 정수가 아님 ⭐️
  - (스위프트는 문자열을 글자의 의미단위로 사용하기 때문에, 정수 인덱스 사용 불가)
  
@@ -94,12 +103,17 @@ if emptyString == nil {    // 빈 문자열은 nil이 아님 ===> String타입 (
 let greeting = "Guten Tag!"
 
 
+var index1 = greeting.startIndex
+
 greeting.startIndex
 print(greeting.startIndex)
 
 greeting[greeting.startIndex]    // "G"
 
+// 인덱스 문자로서 다루고 있는 인덱스 타입이 나오기 때문에 인덱스 타입으로서 서브스크립트 문법 사용 가능
+greeting[index1]
 
+// 서브스크립트 문법을 쓸 수 없다는 뜻이 아닌 정수 형태의 인덱스를 사용할 수 없다는 뜻이라는 것을 이해
 
 // 정수형태를 한번 변형해서(걸러서) 사용하는 방식 ⭐️
 
@@ -178,7 +192,7 @@ for i in greeting.indices {
 }
 
 
-//let greeting = "Guten Tag!"
+// let greeting = "Guten Tag!"
 
 
 // 문자열 특정범위를 추출
@@ -204,3 +218,162 @@ greeting[range]
 
 var distance = greeting.distance(from: lower, to: upper)
 print(distance)
+
+
+
+//: ***
+
+
+/*: ## 문자열의 삽입/교체/추가/삭제
+ - 삽입(insert), 교체(replace), 추가(append), 삭제(remove)
+ ***
+ */
+
+//:> 문자열은 배열과 유사한 데이터 바구니
+
+/**================================================
+ [삽입하기]
+   insert(_:,at:)       // 특정인덱스에 문자
+   insert(contentsOf:,at:)    // 특정인덱스에 문자열
+ 
+ [교체하기]
+   replaceSubrange(_:,with:)    // 범위기준 교체
+   replacingOccurrences(of:,with:)       //  (존재하면) 해당글자가 있으면 교체 ==> 원본은 그대로
+   replacingOccurrences(of:,with:,options:,range:)
+ 
+ [추가하기]
+   문자열 기본 연산자 + / +=
+   append(_:)
+
+ [삭제하기]
+   remove(at:)        // 특정인덱스의 문자
+   removeSubrange(_:)       // 특정인덱스의 문자열
+ 
+ - removeFirst(2)
+ - removeLast(2)
+ - removeAll()
+ - removeAll(keepingCapacity: true)
+ 
+
+ 
+ [Subrange만 반환] 원본은 그대로
+ - dropFirst(2)   // 앞의 두글자 뺀 나머지 반환
+ - dropLast(2)    // 뒤의 두글자 뺀 나머지 반환
+ ==================================================**/
+
+/*: ---
+ - 삽입하기 (insert)
+ ---
+ */
+
+var welcome = "Hello"
+
+welcome.insert("!", at: welcome.endIndex)
+// "Hello!"
+
+
+welcome.insert(contentsOf: " there", at: welcome.index(before: welcome.endIndex))
+// "Hello there!"
+
+
+/*: ---
+ - 교체하기 (replace)
+ ---
+ */
+
+welcome = "Hello there!"
+print(welcome)
+
+if let range = welcome.range(of: " there!") {  // 범위를 가지고
+    welcome.replaceSubrange(range, with: " Swift!")     // 교체하기
+    print(welcome)
+}
+
+
+// 교체하되, 문자열 원본은 그대로 (occurrence: 존재하는)
+
+var newWelcome = welcome.replacingOccurrences(of: "Swift", with: "World")
+// "Swift"라는 문자열이 존재하면, "World"로 교체
+print(welcome)
+print(newWelcome)
+
+                                                                // 대소문자 무시 옵션
+newWelcome = welcome.replacingOccurrences(of: "swift", with: "New World", options: [.caseInsensitive], range: nil)
+print(welcome)
+print(newWelcome)
+
+/*: ---
+ - 추가하기 (append)
+ ---
+ */
+
+"swift" + "!"  // 너무나 당연
+
+welcome.append("!")
+welcome.append(" Awesome!")
+
+/*: ---
+ - 삭제(제거)하기 (remove)
+ ---
+ */
+
+welcome = "Hello Swift!"
+
+
+// 인덱스를 가지고 지우기
+// (endIndex의 전 인덱스)
+welcome.remove(at: welcome.index(before: welcome.endIndex))     // "!" 지우기
+welcome
+// "Hello Swift"
+
+
+// 인덱스 범위파악
+var range1 = welcome.index(welcome.endIndex, offsetBy: -6)..<welcome.endIndex
+//range = welcome.range(of: " Swift")!
+
+
+// " Swift"의 범위를 파악하고 지우기
+welcome.removeSubrange(range1)
+welcome      // "Hello"
+
+
+welcome.removeAll()
+welcome.removeAll(keepingCapacity: true)
+
+/*: ---
+ - 문자열 삽입과 삭제의 활용
+ ---
+ */
+
+var string1 = "Hello world"
+
+
+// 1) " " 공백 문자열의 인덱스 찾기
+// 2) " " 공백 문자열의 인덱스에 " super" 삽입하기
+
+
+if let someIndex = string1.firstIndex(of: " ") {
+    string1.insert(contentsOf: " super", at: someIndex)
+    print(string1)      // "Hello super world"
+}
+
+
+// 1) 첫 " " 공백 문자열의 인덱스 찾기
+// 2) " super" 문자열의 범위 만들기
+// 3) 범위 삭제하기
+
+
+if let firstIndex = string.firstIndex(of: " ") {
+    let range2 = firstIndex...string.index(firstIndex, offsetBy: 5)
+    string.removeSubrange(range2)
+    print(string)     // "Hello world"
+}
+
+
+
+// 바꿀 문자열을 정확하게 알고 있다면 ===> 범위를 직접 리턴하는 메서드 활용 ⭐️
+
+if let range2 = string.range(of: " world") {
+    string.removeSubrange(range)
+    print(string)
+}
