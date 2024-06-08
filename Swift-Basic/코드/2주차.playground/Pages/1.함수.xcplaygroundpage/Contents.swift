@@ -1,4 +1,4 @@
-import Foundation
+import UIKit
 
 /*: ## 함수의 파라미터, 아규먼트
  - 파라미터(Parameter)
@@ -786,9 +786,6 @@ doAnything()
  */
 
 //:> 함수내의 파라미터는 기본적으로 값타입이고(복사되서 전달) 임시상수이기 때문에 변경 불가 원칙
-
-
-
 var num1 = 123      // 전역변수
 
 var num2 = 456      // 전역변수
