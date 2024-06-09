@@ -109,7 +109,6 @@ koreaTeam.nationalTeam()
  - 클래스와 구조체
  ---
  */
-
 /**=========================================================
  
  - 클래스와 구조체 모두 메모리에 찍어낸 것을 인스턴스(instance)라고 함
@@ -246,7 +245,6 @@ k.name
 
 k.name = "손흥민"
 
-
 k.name
 
 
@@ -335,7 +333,7 @@ class PersonClass {
 }
 
 
-class AnimalStruct {
+struct AnimalStruct {
     
     var name = "동물"
     

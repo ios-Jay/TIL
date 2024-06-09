@@ -297,7 +297,7 @@ var newWelcome = welcome.replacingOccurrences(of: "Swift", with: "World")
 print(welcome)
 print(newWelcome)
 
-welcome.replacingOccurrences(of: <#T##StringProtocol#>, with: <#T##StringProtocol#>)
+// welcome.replacingOccurrences(of: <#T##StringProtocol#>, with: <#T##StringProtocol#>)
 
                                                                 // 대소문자 무시 옵션
 newWelcome = welcome.replacingOccurrences(of: "swift", with: "New World", options: [.caseInsensitive], range: nil)
@@ -592,12 +592,14 @@ mystring.dropLast(3)
 
 
 // 올바른 전화번호 형식일까?
+
 // (정규식 확인하는 코드)
 
 let number = "010-1234-12345"
 
 
 // 정규식 (RawString으로 작성하면 메타문자를 바로 입력가능) ===> 가독성 높아짐
+
 // (스위프트에서는 \ 백슬레시를 이스케이프 문자로 인식하기 때문)
 
 var telephoneNumRegex = #"[0-9]{3}\-[0-9]{4}\-[0-9]{4}"#
@@ -769,7 +771,6 @@ print(phoneNumbers.components(separatedBy: .whitespaces).joined())
 
 
 //:> 특정 문자열 검색에도 활용가능
-
 myname = "hello+world"
 
 
@@ -777,3 +778,4 @@ if let range = myname.rangeOfCharacter(from: .symbols) {
     print(myname[range])
 }
 
+name.rangeOfCharacter(from: .whitespaces)
