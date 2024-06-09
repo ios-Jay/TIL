@@ -135,7 +135,7 @@ numFunction(num1: 3, num2: 7)
 
 
 
-// print(<#T##items: Any...##Any#>, separator: <#T##String#>, terminator: <#T##String#>)
+print(<#T##items: Any...##Any#>, separator: <#T##String#>, terminator: <#T##String#>)
 
 
 

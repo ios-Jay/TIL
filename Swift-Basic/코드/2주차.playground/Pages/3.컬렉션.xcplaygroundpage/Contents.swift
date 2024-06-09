@@ -29,7 +29,7 @@ import UIKit
  
  - (순서가 있기 때문에) 값은 중복 가능
  
-================================================================**/
+ ================================================================**/
 
 var numsArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
@@ -129,6 +129,8 @@ print(stringArray)
 
 stringArray.first
 
+print(stringArray.first)
+
 // 리턴값 String?  ====> 빈 배열이라면 nil 리턴
 
 // 일반적으로 first에 접근했을때 값이 없을수도 있는 경우가 있기 때문에 옵셔널 타입으로 주는 것이다.
@@ -136,6 +138,8 @@ stringArray.first
 // 지금 실제로는 값이 존재하므로 강제추출연산자!를 사용하여 string.first!로 프린트 할 수 있다.
 
 stringArray.last
+
+print(stringArray.last)
 
 // 배열의 시작 인덱스
 
@@ -148,7 +152,6 @@ stringArray.startIndex
 stringArray.endIndex
 
 // stringArray.endIndex.advanced(by: -1)
-
 
 // endIndex는 배열로 저장되는 메모리 공간의 끝의 주소를 의미한다.
 
@@ -229,7 +232,6 @@ alphabet.append(contentsOf: ["H", "I"])
  */
 alphabet = ["A", "B", "C", "D", "E", "F", "G"]
 
-
 // 서브스크립트 문법으로 삭제
 
 alphabet[0...2] = []   //빈배열 전달하면 해당 범위가 삭제
@@ -249,7 +251,7 @@ alphabet.removeSubrange(0...2)
 alphabet = ["A", "B", "C", "D", "E", "F", "G"]
 
 
-// alphabet.removeFirst()
+alphabet.removeFirst()
 
 // 맨 앞에 요소 삭제하고 삭제된 요소 리턴 (리턴형 String)
 
@@ -359,9 +361,9 @@ if let lastIndexOfP = puppy1.lastIndex(of: "p") {
     
     puppy1.remove(at: lastIndexOfP) // == 3
     
-//    at: 3이라고 사용하지 않는 이유: 배열에 p가 없을 수도 있기 때문(앱 개발 시)
+    //    at: 3이라고 사용하지 않는 이유: 배열에 p가 없을 수도 있기 때문(앱 개발 시)
     
-//    즉, 데이터 바구니가 플레이그라운드가 아닌 앱 개발에서는 복잡하기 때문.
+    //    즉, 데이터 바구니가 플레이그라운드가 아닌 앱 개발에서는 복잡하기 때문.
 }
 // 가장 뒤에서부터 먼저 있는 p를 찾았을 때
 
@@ -405,7 +407,6 @@ for i in nums {
 
 
 
-//:> enumerate: 영어로 열거하다는 뜻
 
 // enumerated() ===> 열거된 것들을 Named 튜플 형태로 한개씩 전달
 
@@ -1065,12 +1066,12 @@ var newArray: Array = newSet.sorted()
  
  - 딕셔너리와 비슷한 형태지만, "순서"가 있는 컬렉션
  
-
+ 
  - key값이 해셔블(hashable)일 필요없음 (검색 알고리즘상 빠르지 않음)
  
  - key값이 동일한 것도 가능
  
-========================================================**/
+ ========================================================**/
 
 let introduce: KeyValuePairs = ["first": "Hello", "second": "My Name", "third":"is"]
 
