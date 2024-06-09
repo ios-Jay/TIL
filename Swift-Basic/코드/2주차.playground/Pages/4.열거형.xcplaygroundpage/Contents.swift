@@ -221,6 +221,8 @@ enum RPS: Int {
 
 // 출력은 하지만, 문자열은 아님에 주의
 
+// 타입을 명시했을 경우 옵셔널 열거형 타입이므로 언래핑해서 사용해야 한다.
+
 var myChoice: RPS = RPS(rawValue: Int.random(in: 0...2))!
 
 var comChoice: RPS = RPS(rawValue: Int.random(in: 0...2))!
@@ -910,7 +912,7 @@ for case let number? in arrays1 {
     print("Found a \(number)")
 }
 
-/*:## Undknown 키워드
+/*:## Unknown 키워드
  - 만약, 열거형의 케이스가 늘어난다면 항상 올바른 처리를 하고 있다고 말할 수 있을까?
  ---
  */
