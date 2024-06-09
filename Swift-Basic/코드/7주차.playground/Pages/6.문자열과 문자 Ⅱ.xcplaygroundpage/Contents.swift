@@ -411,9 +411,22 @@ if let range = string.range(of: " world") {
 var a = "swift"
 var b = "Swift"
 
+var result = a.caseInsensitiveCompare(b)
 
+switch result {
+case .orderedAscending:
+    print("오름차순으로 나옴")
+case .orderedDescending:
+    print("내림차순으로 나옴")
+case .orderedSame:
+    print("동일한 차순으로 나옴")
+}
 
 a.caseInsensitiveCompare(b) == ComparisonResult.orderedSame
+
+
+
+
 
 //문자열.caseInsensitiveCompare(<#T##aString: StringProtocol##StringProtocol#>)
 
@@ -513,6 +526,8 @@ if let _ = "Hello, Swift".range(of: "Hello", options: [.anchored]) {   // 범위
 }
 
 
+
+
 // .anchored 옵션 + .backwards 뒷자리부터 고정 (접미어)
 if let _ = "Hello, Swift".range(of: "Swift", options: [.anchored, .backwards]) {   // ===> 접미어 기능
     print("접미어 일치")
@@ -522,7 +537,6 @@ if let _ = "Hello, Swift".range(of: "Swift", options: [.anchored, .backwards]) {
  - 문자열에서 일치여부 확인하기
  ---
  */
-
 let mystring = "Hello, world!"
 
 

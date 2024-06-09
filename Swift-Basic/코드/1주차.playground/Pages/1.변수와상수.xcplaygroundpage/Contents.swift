@@ -2,6 +2,8 @@ import UIKit
 
 //: # 변수와 상수
 
+//: ---
+
 /*: ## 1) 변수(Variables)
  
  * 변수의 의미: 변할 수 있는 데이터(자료)를 담을 수 있는 메모리 공간(바구니)
@@ -46,8 +48,6 @@ var k = x + y + z
 ---
  
  */
-
-
 // 변수의 이름은 소문자로 시작(대문자로 시작하는 것은 권장하지 않음)
 
 // 중간에 숫자들어가는 것은 Ok. (숫자를 첫글자로 시작하는 것은 금지)
@@ -105,14 +105,14 @@ print(playerName, playerClub)
  */
 // 상수(immutable): 값이 변경 불가능한
 
-let koreaFootballPlayer: String = "이강인"
+let koreanFootballPlayer: String = "이강인"
 
 
 // koreaFootballPlayer = "뎀벨레"
 
 // → 변하지 않는 데이터이므로 당연히 에러 발생
 
-print(koreaFootballPlayer)
+print(koreanFootballPlayer)
 
 
 // 변수와 상수를 통틀어, 변수(저장된 데이터라는 관점에서)라고 일반적으로 부르기도 함
