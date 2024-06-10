@@ -1,4 +1,4 @@
-import Foundation
+import UIKit
 
 //: # 구조체, 클래스의 속성
 
@@ -520,6 +520,8 @@ class Circle {
     var radius: Double
     
     init(radius: Double) {
+        
+        // 인스턴스를 찍어낼 경우 count가 하나씩 올라간다는 뜻
         
         self.radius = radius
         
