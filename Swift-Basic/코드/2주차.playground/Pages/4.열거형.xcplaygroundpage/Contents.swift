@@ -171,6 +171,8 @@ enum Alignment: Int {
 
 // 0, 2(설정시), 3
 
+// 타입을 명시했기 때문에 언래핑해서 사용(!)
+
 var num: Alignment = Alignment(rawValue: Int.random(in: 0...3))!
 
 let align = Alignment(rawValue: 2)
@@ -333,7 +335,7 @@ enum FCBarcelona {
  */
 
 
-let myPlayer1 = FCBarcelona.player(name: "레반도프슼", uniformNumber: 9)
+let myPlayer1 = FCBarcelona.player(name: "레반도프스키", uniformNumber: 9)
 
 let myPlayer2 = FCBarcelona.player(name: "페드리", uniformNumber: 8)
 
@@ -372,8 +374,6 @@ let myPlayer3 = FCBarcelona.profile2(position: "포워드", isRightFoot: true)
  */
 var mySquard: FCBarcelona = FCBarcelona.profile1(nation: "스페인", age: 2007)
 
-
-
 switch mySquard {
 case .player(name: "라민 야말", uniformNumber: 33):
     print("바르셀로나의 라민 야말입니다.")
@@ -393,8 +393,6 @@ case .profile1(nation: let n, age: let a):
     print("국적은 \(n)이며 나이는 \(2007)년생 입니다.")
 case .profile2(position: let p, isRightFoot: let i):
     print("포지션은 인사이드 포워드이고, 주로 쓰는 발은 \(i)이 아닙니다.")
-default:
-    break
 }
 
 /*: ## 옵셔널 타입에 대한 정확한 이해
@@ -968,6 +966,7 @@ default:
  */
 
 /**===================================================
+ 
  - @unknown 키워드를 default블럭에 추가해둠
  
  - switch문에서 열거형의 모든 케이스를 다루지 않는 경우,
@@ -990,6 +989,5 @@ case .google:
 @unknown default:
     print("그 외의 모든 경우")
 }
-
 
 
