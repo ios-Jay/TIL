@@ -684,4 +684,6 @@ func printIntegerKinds(_ numbers: [Int]) {
 
 // 함수 실행해보기
 
-printIntegerKinds([3, 19, -27, 0, -6, 0, 7])      // + + - 0 - 0 +
+printIntegerKinds([3, 19, -27, 0, -6, 0, 7])      
+
+// + + - 0 - 0 +
