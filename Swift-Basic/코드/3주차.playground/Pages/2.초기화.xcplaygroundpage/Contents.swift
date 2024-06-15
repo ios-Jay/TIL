@@ -1,4 +1,4 @@
-import Foundation
+import UIKit
 
 //: ## 구조체, 클래스의 초기화의 의미
 //: - 객체의 생성

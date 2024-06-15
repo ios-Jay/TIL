@@ -2,6 +2,8 @@ import UIKit
 
 //: # 확장(Extensions)
 
+//: ---
+
 /*: ## 확장(Extensions)
  - 확장의 개념에 대한 이해
  ---
