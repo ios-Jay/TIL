@@ -714,3 +714,177 @@ if twoThree == anotherTwoThree {
   연산자(==) 메서드 자동 채택/구현
  =============================================================**/
 
+
+/*:
+ ## 연산의 우선순위 그룹
+ * 우선순위 그룹 - 우선순위와 결합성(Precedence and Associativity)
+ ---
+ */
+// 우선 순위 그룹의 선언
+
+precedencegroup MyPrecedence {            // higherThan 또는 lowerThan 둘중에 하나는 반드시 지정해야함
+    higherThan: AdditionPrecedence        // ~보다 높은(higherThan): 지정하려는 그룹보다 순위가 낮은 그룹
+    lowerThan: MultiplicationPrecedence   // ~보다 낮은(lowerThan): 지정하려는 그룹보다 순위가 높은 그룹
+    associativity: left          // 결합성 ===> left / right / none
+}
+
+
+
+
+// 우선순위와 결합성의 선언
+// https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations
+
+
+//: ---
+
+/*:
+ ## 사용자 정의 연산자
+ * 스위프트가 제공하는 연산자 이외의 연산자 구현
+ ---
+ */
+// 조금 더 깊게 연산자에 대해 이해해보기
+// (연산자도 사실은 내부적으로 다 구현이 되어있는 타입 메서드임)
+
+
+// 앞 강의 (연산자 메서드) 예시 =========================================
+
+struct Vector2DD {
+    var x = 0.0, y = 0.0
+}
+
+
+extension Vector2DD {
+    static func + (left: Vector2DD, right: Vector2DD) -> Vector2DD {
+        return Vector2DD(x: left.x + right.x, y: left.y + right.y)
+    }
+}
+
+
+extension Vector2DD {
+    static func += (left: inout Vector2DD, right: Vector2DD) {
+        left = left + right
+    }
+}
+
+// ================================================================
+
+//:> infix(중위) 연산자의 경우, 연산자의 "우선 순위 그룹"을 지정해야함 (우선 순위, 결합성)
+// 중위연산자가 아닌 경우는 지정할 필요없음
+
+
+/**======================================================
+ - 1) 우선순위 그룹의 선언 (우선순위, 결합성 설정)
+========================================================**/
+
+precedencegroup MyPrecedence1 {
+    higherThan: AdditionPrecedence
+    lowerThan: MultiplicationPrecedence
+    associativity: left                   // 결합성 ===> left / right / none
+}
+
+
+
+/**======================================================
+ - 2) (전역의 범위에서) 정의하려는 연산자를 선언하고, 우선순위 그룹을 지정
+ - 단항 ==> 전치(prefix), 후치(postfix) / 이항 ==> infix
+   키워드를 앞에 붙여야 함
+ ========================================================**/
+
+
+infix operator +-: MyPrecedence1
+
+
+
+// "우선 순위와 결합성"을 지정은 새로운 우선순위 그룹을 선언하거나, 이미 존재하는 우선 순위 그룹을 사용하는 것도 가능
+// 우선순위 그룹을 지정하지 않으면 "DefaultPrecedence"라는 기본 그룹에 속하게 됨
+// (삼항연산자보다 한단계 높은 우선순위가 되며, 결합성은 none설정되어 다른 연산자와 결합 사용은 불가능)
+
+
+
+/**======================================================
+ - 3) 연산자의 실제 정의
+ - 해당 연산자를 구현하려는 타입에서 타입메서드로 연산자 내용을 직접 구현
+ ========================================================**/
+
+extension Vector2DD {
+    static func +- (left: Vector2DD, right: Vector2DD) -> Vector2DD {
+        return Vector2DD(x: left.x + right.x, y: left.y - right.y)
+    }
+}
+
+
+
+// 커스텀 연산자의 사용
+
+let firstVector = Vector2DD(x: 1.0, y: 2.0)
+let secondVector = Vector2DD(x: 3.0, y: 4.0)
+let plusMinusVector = firstVector +- secondVector
+
+print(plusMinusVector)                             // Vector2D(x: 4.0, y: -2.0)
+
+
+
+
+// 우선순위와 결합성의 선언
+// https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations
+
+
+/*:
+ ---
+ * 중위연산자가 아닌 경우의 예시
+ ---
+ */
+// 1) 연산자의 선언
+
+prefix operator +++
+
+
+// 2) 연산자의 실제 정의
+
+extension Vector2DD {
+    static prefix func +++ (vector: inout Vector2DD) -> Vector2DD {
+        vector += vector   // 복합할당 연산자는 이미 구현되어있기 때문에 사용 가능
+        return vector
+    }
+}
+
+
+
+// 커스텀 연산자의 사용
+
+var toBeDoubled = Vector2DD(x: 1.0, y: 4.0)
+let afterDoubling = +++toBeDoubled
+
+// toBeDoubled 의 값은 이제 (2.0, 8.0) 입니다.
+// afterDoubling 도 값이 (2.0, 8.0) 입니다.
+
+
+
+
+
+// 조금 더 쉬운 예시 =======================================
+
+// 1) 연산자 (위치) 선언
+
+prefix operator ++
+
+
+// 2) 연산자의 실제 정의
+
+extension Int {
+    static prefix func ++(number: inout Int) {
+        number += 1
+    }
+}
+
+
+var a00 = 0
+++a00   // +1
+++a00   // +1
+++a00   // +1
+print(a00)
+
+
+
+
+
