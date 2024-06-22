@@ -1,8 +1,12 @@
 import UIKit
 
 /*:
- # Part20 - 에러 처리(Error Handling)
+ # 에러 처리(Error Handling)
  */
+
+//: ---
+
+
 /*:
  ## 에러 처리 문법
  * 에러(오류)의 이해

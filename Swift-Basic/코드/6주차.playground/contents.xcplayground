@@ -3,7 +3,7 @@
     <pages>
         <page name='1. 메모리 관리'/>
         <page name='2.에러처리'/>
-        <page name='3.네트워크'/>
+        <page name='3.네트워킹'/>
         <page name='4.제네릭'/>
     </pages>
 </playground>
